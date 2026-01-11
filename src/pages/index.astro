@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Xianglong Tao">
+  <section class="intro">
+    <h1>Hi, I'm Xianglong.</h1>
+    <p class="lead">
+      I'm a software engineer interested in systems design, equilibrium analysis,
+      and building tools that help understand complex dynamics.
+    </p>
+    <p>
+      I work on problems where stability, coherence, and convergence matter—from
+      multi-agent AI systems to distributed architectures.
+    </p>
+  </section>
+
+  <section class="featured-project">
+    <h2>Featured Project</h2>
+    <div class="project-card">
+      <h3>
+        <a href="https://github.com/daidaitaotao/taocore" target="_blank">TaoCore</a>
+      </h3>
+      <p class="project-tagline">
+        A systems-level abstraction layer for reasoning about stability, coherence,
+        and dynamics in complex systems.
+      </p>
+      <p class="project-description">
+        TaoCore provides equilibrium-based convergence detection for iterative AI
+        systems—replacing arbitrary stopping criteria with principled analysis.
+        Think of it as the equilibrium layer for multi-agent orchestration, RAG
+        refinement loops, and prompt optimization.
+      </p>
+      <div class="project-links">
+        <a href="https://github.com/daidaitaotao/taocore" target="_blank">GitHub</a>
+        <a href="https://pypi.org/project/taocore/" target="_blank">PyPI</a>
+        <a href="https://github.com/daidaitaotao/taocore#readme" target="_blank">Documentation</a>
+      </div>
+      <div class="project-meta">
+        <code>pip install taocore</code>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick-links">
+    <h2>Links</h2>
+    <ul>
+      <li><a href="https://github.com/daidaitaotao" target="_blank">GitHub</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  .intro {
+    margin-bottom: 4rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+
+  .intro p {
+    color: #7f8c8d;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-project {
+    margin-bottom: 4rem;
+  }
+
+  .project-card {
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 2rem;
+    background: #fafbfc;
+  }
+
+  .project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-card h3 a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .project-card h3 a:hover {
+    color: #2980b9;
+  }
+
+  .project-tagline {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+
+  .project-description {
+    color: #7f8c8d;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-links a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .project-links a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+
+  .project-meta {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e1e8ed;
+  }
+
+  .project-meta code {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
+    background: #f4f5f7;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    display: inline-block;
+  }
+
+  .quick-links ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .quick-links a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .quick-links a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+    }
+
+    .project-card {
+      padding: 1.5rem;
+    }
+
+    .project-links {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .quick-links ul {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+</style>

@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About | Xianglong Tao"
+  description="Software engineer exploring systems design, equilibrium analysis, and AI/ML infrastructure"
+>
+  <article class="about">
+    <h1>About</h1>
+
+    <section>
+      <p>
+        I'm a software engineer with interests spanning systems design, distributed
+        architectures, and understanding how complex systems reach stability.
+      </p>
+      <p>
+        My work focuses on the intersection of practical engineering and theoretical
+        foundations—building tools that help reason about equilibrium, convergence,
+        and coherence in systems ranging from multi-agent AI to service meshes.
+      </p>
+    </section>
+
+    <section>
+      <h2>Current Focus</h2>
+      <p>
+        I'm exploring how equilibrium-based analysis can improve modern AI systems:
+      </p>
+      <ul>
+        <li>Multi-agent orchestration with principled stopping criteria</li>
+        <li>Adaptive RAG systems that know when to stop refining</li>
+        <li>Prompt optimization with convergence detection</li>
+        <li>Graph-based memory systems with temporal decay</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Open Source</h2>
+      <p>
+        I maintain <a href="https://github.com/daidaitaotao/taocore" target="_blank">TaoCore</a>,
+        a systems-level abstraction layer for reasoning about stability and dynamics.
+        It's designed to be domain-agnostic, descriptive rather than prescriptive,
+        and built on fixed-point iteration rather than optimization.
+      </p>
+    </section>
+
+    <section>
+      <h2>Approach</h2>
+      <p>I believe in:</p>
+      <ul>
+        <li><strong>Simple over clever</strong> — Boring solutions that work beat elegant ones that don't</li>
+        <li><strong>Descriptive over prescriptive</strong> — Observe and analyze, don't force outcomes</li>
+        <li><strong>Equilibrium over optimization</strong> — Seek stability, not optima</li>
+        <li><strong>Explicit over implicit</strong> — Make behavior observable and inspectable</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>
+        Find me on <a href="https://github.com/daidaitaotao" target="_blank">GitHub</a>.
+      </p>
+    </section>
+
+    <section class="disclaimer">
+      <p><em>
+        All content on this site represents my personal views and does not reflect
+        the opinions, positions, or policies of my employer.
+      </em></p>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .about {
+    max-width: 65ch;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+
+  section {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    color: #7f8c8d;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+
+  ul {
+    margin-left: 1.5rem;
+    color: #7f8c8d;
+    line-height: 1.8;
+  }
+
+  ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  strong {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+
+  .disclaimer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e1e8ed;
+  }
+
+  .disclaimer p {
+    color: #95a5a6;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+</style>

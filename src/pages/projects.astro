@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Projects | Xianglong Tao"
+  description="Open source projects and experiments in systems design and equilibrium analysis"
+>
+  <div class="projects">
+    <h1>Projects</h1>
+    <p class="intro">
+      Open source projects exploring systems design, equilibrium analysis,
+      and practical applications of stability theory.
+    </p>
+
+    <div class="project-list">
+      <article class="project">
+        <h2>
+          <a href="https://github.com/daidaitaotao/taocore" target="_blank">TaoCore</a>
+        </h2>
+        <p class="tagline">
+          Systems-level abstraction layer for stability and coherence analysis
+        </p>
+        <p class="description">
+          TaoCore provides equilibrium-based convergence detection for iterative AI systems.
+          Instead of arbitrary <code>for i in range(10)</code> loops, it offers principled
+          stopping criteria with oscillation detection, stability scoring, and explicit
+          failure modes.
+        </p>
+        <div class="tech-stack">
+          <span>Python</span>
+          <span>NumPy</span>
+          <span>Graph Theory</span>
+        </div>
+        <div class="links">
+          <a href="https://github.com/daidaitaotao/taocore" target="_blank">GitHub</a>
+          <a href="https://pypi.org/project/taocore/" target="_blank">PyPI</a>
+          <a href="https://github.com/daidaitaotao/taocore#readme" target="_blank">Docs</a>
+        </div>
+        <div class="status">
+          <span class="badge">v0.1.0</span>
+          <span class="badge">Published</span>
+          <span class="badge">115 tests</span>
+        </div>
+      </article>
+
+      <article class="project placeholder">
+        <h2>Future Projects</h2>
+        <p class="description">
+          More explorations in systems design, equilibrium analysis, and practical
+          applications coming soon.
+        </p>
+      </article>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .projects {
+    max-width: 800px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .intro {
+    color: #7f8c8d;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .project {
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 2rem;
+    background: #fafbfc;
+  }
+
+  .project.placeholder {
+    opacity: 0.6;
+  }
+
+  .project h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+  }
+
+  .project h2 a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .project h2 a:hover {
+    color: #2980b9;
+  }
+
+  .tagline {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+
+  .description {
+    color: #7f8c8d;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .description code {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
+    background: #f4f5f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #2c3e50;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-stack span {
+    background: #ecf0f1;
+    color: #7f8c8d;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .links a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .links a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+
+  .status {
+    display: flex;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e1e8ed;
+  }
+
+  .badge {
+    background: #e8f4f8;
+    color: #3498db;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .project {
+      padding: 1.5rem;
+    }
+
+    .links {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .status {
+      flex-wrap: wrap;
+    }
+  }
+</style>
