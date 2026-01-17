@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('journal');
+const sortedEntries = entries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout
+  title="Journal | contextself"
+  description="Notes and reflections on philosophy, equilibrium, and research"
+>
+  <div class="journal">
+    <h1>Journal</h1>
+    <p class="intro">
+      Notes from the path—observations, questions, and fragments of understanding.
+    </p>
+
+    <div class="entries">
+      {sortedEntries.map((entry) => (
+        <article class="entry">
+          <a href={`/journal/${entry.slug}`}>
+            <h2>{entry.data.title}</h2>
+            {entry.data.description && <p class="description">{entry.data.description}</p>}
+            <time datetime={entry.data.date.toISOString()}>
+              {entry.data.date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    {sortedEntries.length === 0 && (
+      <p class="empty">No entries yet. The journey begins with a single step.</p>
+    )}
+  </div>
+</Layout>
+
+<style>
+  .journal {
+    max-width: 65ch;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .intro {
+    color: #7f8c8d;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+
+  .entries {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .entry {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #ecf0f1;
+  }
+
+  .entry:last-child {
+    border-bottom: none;
+  }
+
+  .entry a {
+    text-decoration: none;
+    display: block;
+  }
+
+  .entry h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+    transition: color 0.2s;
+  }
+
+  .entry a:hover h2 {
+    color: #3498db;
+  }
+
+  .entry .description {
+    color: #5d6d7e;
+    line-height: 1.6;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .entry time {
+    font-size: 0.9rem;
+    color: #95a5a6;
+  }
+
+  .empty {
+    color: #95a5a6;
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .entry h2 {
+      font-size: 1.2rem;
+    }
+  }
+</style>

@@ -2,199 +2,130 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Xianglong Tao">
-  <section class="intro">
-    <h1>Hi, I'm Xianglong.</h1>
-    <p class="lead">
-      I'm a software engineer interested in systems design, equilibrium analysis,
-      and building tools that help understand complex dynamics.
-    </p>
+<Layout title="contextself">
+  <section class="opening">
+    <blockquote class="featured">
+      "The Tao that can be told is not the eternal Tao."
+      <cite>— Tao Te Ching, Chapter 1</cite>
+    </blockquote>
+  </section>
+
+  <section class="reflections">
+    <h2>Reflections</h2>
+
+    <article class="reflection">
+      <p>
+        Water does not resist. It flows around obstacles, finds the lowest point,
+        and in its softness, wears away stone. There is something here about how
+        to move through the world.
+      </p>
+    </article>
+
+    <article class="reflection">
+      <p>
+        We spend so much energy trying to optimize, to maximize, to reach some peak.
+        But perhaps the question is not "what is the best outcome?" but rather
+        "what state can sustain itself?"
+      </p>
+    </article>
+
+    <article class="reflection">
+      <p>
+        Human nature is not a problem to be solved. It is a landscape to be understood—
+        with its valleys and peaks, its rivers and deserts. We navigate it, we don't
+        conquer it.
+      </p>
+    </article>
+
+    <article class="reflection">
+      <p>
+        Equilibrium is not stillness. A river at equilibrium is still flowing.
+        A forest at equilibrium is still growing and dying. Balance is dynamic,
+        not static.
+      </p>
+    </article>
+  </section>
+
+  <section class="closing">
     <p>
-      I work on problems where stability, coherence, and convergence matter—from
-      multi-agent AI systems to distributed architectures.
+      A space for exploring ideas about how things find balance,
+      why we are the way we are, and what the old wisdom still has to teach.
     </p>
-  </section>
-
-  <section class="featured-project">
-    <h2>Featured Project</h2>
-    <div class="project-card">
-      <h3>
-        <a href="https://github.com/daidaitaotao/taocore" target="_blank">TaoCore</a>
-      </h3>
-      <p class="project-tagline">
-        A systems-level abstraction layer for reasoning about stability, coherence,
-        and dynamics in complex systems.
-      </p>
-      <p class="project-description">
-        TaoCore provides equilibrium-based convergence detection for iterative AI
-        systems—replacing arbitrary stopping criteria with principled analysis.
-        Think of it as the equilibrium layer for multi-agent orchestration, RAG
-        refinement loops, and prompt optimization.
-      </p>
-      <div class="project-links">
-        <a href="https://github.com/daidaitaotao/taocore" target="_blank">GitHub</a>
-        <a href="https://pypi.org/project/taocore/" target="_blank">PyPI</a>
-        <a href="https://github.com/daidaitaotao/taocore#readme" target="_blank">Documentation</a>
-      </div>
-      <div class="project-meta">
-        <code>pip install taocore</code>
-      </div>
-    </div>
-  </section>
-
-  <section class="quick-links">
-    <h2>Links</h2>
-    <ul>
-      <li><a href="https://github.com/daidaitaotao" target="_blank">GitHub</a></li>
-      <li><a href="/projects">Projects</a></li>
-      <li><a href="/about">About</a></li>
-    </ul>
   </section>
 </Layout>
 
 <style>
-  .intro {
+  .opening {
     margin-bottom: 4rem;
+    padding: 2rem 0;
   }
 
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+  .featured {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #2c3e50;
+    line-height: 1.6;
+    border-left: 3px solid #bdc3c7;
+    padding-left: 1.5rem;
+    margin: 0;
+  }
+
+  .featured cite {
+    display: block;
+    font-size: 1rem;
+    font-style: normal;
+    color: #7f8c8d;
+    margin-top: 1rem;
   }
 
   h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .lead {
     font-size: 1.25rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-  }
-
-  .intro p {
+    font-weight: 600;
     color: #7f8c8d;
-    margin-bottom: 0.75rem;
+    margin-bottom: 2rem;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
   }
 
-  .featured-project {
+  .reflections {
     margin-bottom: 4rem;
   }
 
-  .project-card {
-    border: 1px solid #e1e8ed;
-    border-radius: 8px;
-    padding: 2rem;
-    background: #fafbfc;
+  .reflection {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #ecf0f1;
   }
 
-  .project-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
+  .reflection:last-child {
+    border-bottom: none;
   }
 
-  .project-card h3 a {
-    color: #3498db;
-    text-decoration: none;
-    transition: color 0.2s;
+  .reflection p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #34495e;
+    margin: 0;
   }
 
-  .project-card h3 a:hover {
-    color: #2980b9;
-  }
-
-  .project-tagline {
-    font-weight: 500;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-    font-size: 1.05rem;
-  }
-
-  .project-description {
-    color: #7f8c8d;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .project-links {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .project-links a {
-    color: #3498db;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .project-links a:hover {
-    color: #2980b9;
-    text-decoration: underline;
-  }
-
-  .project-meta {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
+  .closing {
+    padding-top: 2rem;
     border-top: 1px solid #e1e8ed;
   }
 
-  .project-meta code {
-    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
-    background: #f4f5f7;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    color: #2c3e50;
-    display: inline-block;
-  }
-
-  .quick-links ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-  }
-
-  .quick-links a {
-    color: #3498db;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .quick-links a:hover {
-    color: #2980b9;
-    text-decoration: underline;
+  .closing p {
+    color: #95a5a6;
+    font-size: 1rem;
+    line-height: 1.7;
   }
 
   @media (max-width: 640px) {
-    h1 {
-      font-size: 2rem;
+    .featured {
+      font-size: 1.25rem;
     }
 
-    .lead {
-      font-size: 1.1rem;
-    }
-
-    .project-card {
-      padding: 1.5rem;
-    }
-
-    .project-links {
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .quick-links ul {
-      flex-direction: column;
-      gap: 0.75rem;
+    .reflection p {
+      font-size: 1rem;
     }
   }
 </style>

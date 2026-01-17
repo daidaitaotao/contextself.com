@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('journal');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout
+  title={`${entry.data.title} | contextself`}
+  description={entry.data.description || `Journal entry: ${entry.data.title}`}
+>
+  <article class="journal-entry">
+    <header>
+      <h1>{entry.data.title}</h1>
+      <time datetime={entry.data.date.toISOString()}>
+        {entry.data.date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </time>
+    </header>
+
+    <div class="content">
+      <Content />
+    </div>
+
+    <footer>
+      <a href="/journal">&larr; Back to journal</a>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .journal-entry {
+    max-width: 65ch;
+  }
+
+  header {
+    margin-bottom: 3rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    color: #2c3e50;
+  }
+
+  time {
+    font-size: 0.95rem;
+    color: #95a5a6;
+  }
+
+  .content {
+    color: #34495e;
+    line-height: 1.9;
+  }
+
+  .content :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .content :global(h2) {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+
+  .content :global(h3) {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #2c3e50;
+  }
+
+  .content :global(ul),
+  .content :global(ol) {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .content :global(blockquote) {
+    border-left: 3px solid #bdc3c7;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #5d6d7e;
+  }
+
+  .content :global(code) {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
+    background: #f4f5f7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+
+  .content :global(pre) {
+    background: #f4f5f7;
+    padding: 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .content :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+
+  .content :global(a) {
+    color: #3498db;
+    text-decoration: none;
+  }
+
+  .content :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e1e8ed;
+  }
+
+  footer a {
+    color: #7f8c8d;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  footer a:hover {
+    color: #3498db;
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+  }
+</style>
