@@ -1,147 +1,189 @@
 ---
-title: "The Relational Self: Are My Relationships Part of Me?"
+title: "The Relational Self: Where Do I End and We Begin?"
 date: 2025-01-18
-description: "A personal exploration of where 'I' ends and 'we' begins."
+description: "Exploring whether identity lives inside us or between us—through philosophy and research."
 ---
 
-There's a question I keep returning to: **Am I the person I experience from the inside, or am I the person others see?**
+There's a question I keep returning to: **Is the self something I have, or something that happens between people?**
 
-Most days I feel like both. And neither.
+Western culture tells me I'm an individual first. My identity is inside me—my traits, my values, my essence. Relationships are things I *have*, not things I *am*.
 
-I'm building software that observes people—detects faces, tracks who appears with whom, measures how bodies move together. The more I build, the more I wonder: what am I actually capturing? The person? Or just the space around them?
+But other traditions disagree. And so does a growing body of research.
 
-## The Question
+## Three Philosophical Views
 
-Here's what I'm trying to figure out:
+### The Western Individual
 
-**There is me**—the one who wakes up at 3am with thoughts I don't share, who has preferences and fears and a voice in my head that narrates my life.
+Descartes started with "I think, therefore I am"—the self as a thinking thing, separate from world and others. This view runs deep in Western culture: identity is internal, stable, discoverable through introspection.
 
-**There is me-as-seen-by-others**—the son my parents imagine, the friend my friends know, the professional my colleagues work with. Different people see different versions. None of them is wrong, exactly. But none is complete.
+From this perspective, I'm the same person whether I'm alone or with others. Context changes; I don't.
 
-**And then there are my relationships**—the connections themselves. Not me, not them, but the space between.
+**The appeal**: It gives us ownership of ourselves. Agency. Responsibility.
 
-Are those relationships *part* of me? Or are they just... context?
+**The problem**: It doesn't match how identity actually feels—shifting with context, shaped by relationships, never quite the same twice.
 
-## Why This Matters to Me
+### The Relational View
 
-I'm an Asian gay man in my mid-thirties. I've spent my life navigating between worlds that don't always understand each other.
+Buddhist philosophy challenges the idea of a fixed self (*anatta*—"non-self"). What we call "self" is a process, not a thing. It arises in relationship and dissolves when conditions change.
 
-With my family, I'm a son with expectations attached—some spoken, most imagined. The good job, the stability, the question of grandchildren that hangs unasked.
+Ubuntu philosophy from Southern Africa puts it directly: *"I am because we are."* The self is constituted through community. You don't exist as a person outside of relationships.
 
-With my queer friends, I'm someone who came out later than some, who still code-switches when I visit home, who understands the particular exhaustion of managing what different people know about you.
+Confucian thought defines the self through roles—son, friend, citizen. To be a self is to be in right relationship with others.
 
-At work, I'm a technologist. The personal stuff stays personal.
+**The appeal**: It matches the experience of being shaped by the people around us.
 
-Each of these contexts shapes who I am. But here's what I've been sitting with: **which one is "really" me?**
+**The problem**: It can feel like losing yourself—if identity depends on others, who are you when alone?
 
-The Taoist answer might be: the question is wrong. There is no fixed self to find. The self is a process, not a thing. It emerges in relationship, dissolves, re-forms.
+### The Process View
 
-But that's abstract. Let me try to make it concrete.
+Heraclitus said you can't step in the same river twice. The river is a pattern of flow, not a fixed thing.
 
-## What the Research Says (Simply)
+Maybe the self is similar. Not a thing to find, but a pattern to notice. It emerges in context, changes across time, and never holds still long enough to pin down.
 
-Scientists have studied how relationships shape identity. Here's what they found, in plain language:
+**The appeal**: It dissolves the either/or. Identity is neither purely internal nor purely external—it's a process that happens in the space between.
 
-### We see ourselves through others' eyes
+**What this means to me**: I find this view most honest. I'm not the same person with everyone. That's not inauthenticity—it's what selves actually do.
 
-Cooley (1902) called this the "looking-glass self." We don't form our self-image by looking inward—we form it by imagining how others see us.
+## What the Research Says
 
-The data: we're more influenced by what we *think* others think than by what they actually think (Shrauger & Schoeneman, 1979).
+Philosophy gives us frameworks. Research gives us data.
 
-**What this means**: I grew up with an image of what a good son should be. That image came from imagining my parents' expectations—not from them explicitly stating them. The looking-glass showed me a reflection, and I became it.
+### We See Ourselves Through Others' Eyes
 
-Coming out meant breaking the mirror. Or at least, choosing which reflections to believe.
+Cooley (1902) called this the "looking-glass self": we form our self-concept by imagining how others see us.
 
-### Who we spend time with shapes who we become
+Shrauger & Schoeneman (1979) tested this across 60 studies:
 
-Eagle, Pentland, & Lazer (2009) found that who you're physically near—and who reciprocates—predicts who you'd call a friend with 95% accuracy.
+| Correlation | Strength |
+|-------------|----------|
+| Self-perception ↔ *perceived* other-perception | r = 0.40-0.60 |
+| Self-perception ↔ *actual* other-perception | r = 0.20-0.40 |
 
-**What this means**: Relationships aren't just nice-to-have. They're structural. They literally shape our social world, and our social world shapes us.
+**In plain terms**: We're more influenced by what we *imagine* others think than by what they actually think. Our self-image is built on imagination, not reality.
 
-But the data misses something. My most important relationships aren't always the most frequent. Some people I see once a year changed my life. Frequency isn't depth.
+**What this means**: The self isn't discovered through introspection—it's constructed through social imagination. The mirror we look into is partly made of projections.
 
-### Bridges get ahead—and get tired
+### Who We're With Shapes Who We Become
 
-Burt (1992) found that people who connect different social circles get promoted faster and have better ideas.
+Eagle, Pentland, & Lazer (2009) tracked 94 people for 9 months using mobile phone data:
 
-**What this means for me**: I'm often a bridge. Between my traditional family and my queer life. Between Asian cultural expectations and American individualism. Between technical work and philosophical questions.
+| Signal | Correlation with self-reported friendship |
+|--------|------------------------------------------|
+| Face-to-face time | r = 0.52 |
+| Reciprocal calls | r = 0.58 |
+| Location overlap | r = 0.35 |
 
-Bridges are useful. People walk across them.
+Combined, proximity signals predicted friendship with 95% accuracy.
 
-Being a bridge means never fully belonging on either side.
+**In plain terms**: Relationships aren't just feelings—they're patterns. Who you spend time with, and who reciprocates, predicts who you'd call a friend.
 
-### Your network reveals what you hide
+**What this means**: Relationships are structural, not just emotional. And structure shapes identity. We become like the people we're around.
 
-This one hit me hard.
+### Network Position Predicts Outcomes
 
-Jernigan & Mistree (2009) showed they could predict if someone was gay just from their Facebook friends—with 78% accuracy—even if the person never said anything about their orientation.
+Burt (1992, 2004) studied how social network position affects life outcomes:
 
-**What this means**: Your relationships out you. Not because anyone betrays you, but because patterns speak.
+| Position | Effect |
+|----------|--------|
+| Bridging disconnected groups | Promoted 1.4 years earlier |
+| High-constraint (dense network) | 45% had ideas rated "good" |
+| Low-constraint (bridging) | 72% had ideas rated "good" |
 
-I came out when I was ready, on my terms. But some people don't have that choice. Their connections reveal them before they're prepared.
+**In plain terms**: Where you sit in the social network—not just who you know, but how those people connect to each other—predicts success and creativity.
 
-This is why I'm careful about what taocore-human should do. The power to observe is the power to expose. Privacy isn't about having something to hide. It's about controlling your own story.
+**What this means**: Identity isn't just about who you are, but where you are in the web of relationships. Position shapes possibility.
+
+### Social Networks Seek Balance
+
+Heider (1958) proposed that relationships tend toward equilibrium. Leskovec et al. (2010) tested this on 100,000+ users:
+
+| Triad type | Expected | Observed |
+|------------|----------|----------|
+| All friends (+++) | 12.5% | 35.2% |
+| Two friends, one enemy (++-) | 37.5% | 38.1% |
+| One friend, two enemies (+--) | 37.5% | 21.8% |
+| All enemies (---) | 12.5% | 4.9% |
+
+73% of triads were balanced (vs. 50% expected by chance).
+
+**In plain terms**: "The friend of my friend is my friend" isn't just folk wisdom—it's statistically measurable. Social networks evolve toward stable configurations.
+
+**What this means**: There's pressure toward coherence in our relationships. Navigating between disconnected worlds creates structural tension, not just emotional tension.
+
+### Your Relational Style Is Stable
+
+Saramäki et al. (2014) tracked how people maintain relationships over 18 months:
+
+| Property | Stability |
+|----------|-----------|
+| Network size | r = 0.95 |
+| Tie strength distribution | r = 0.87 |
+| Top 5 contacts persistence | 72% |
+
+**In plain terms**: The *shape* of how you distribute attention across relationships stays remarkably stable, even as specific relationships change.
+
+**What this means**: We each have a relational signature—a pattern of how we connect. Understanding this pattern might be as revealing as understanding personality traits.
+
+Dunbar (1992) identified consistent layers:
+
+| Circle | Typical size | Contact frequency |
+|--------|--------------|-------------------|
+| Support clique | 5 | Weekly |
+| Sympathy group | 15 | Monthly |
+| Active network | 150 | Yearly |
+
+These layers appear across cultures. We seem to have cognitive limits on how many relationships we can maintain at different depths.
+
+## The Privacy Problem
+
+This research has a shadow side.
+
+Jernigan & Mistree (2009) showed that social network patterns can reveal things people haven't disclosed:
+- Sexual orientation predictable from friend networks (AUC = 0.78)
+- No explicit disclosure required
+
+**What this means**: Relationship data is sensitive data. Patterns speak even when people don't. The power to observe relationships is the power to expose what people might want to keep private.
+
+This shapes how I think about taocore-human. Detecting relational patterns isn't neutral. It carries responsibility.
 
 ## So Are My Relationships Part of Me?
 
-I've been thinking about this through a few lenses:
+After sitting with this question:
 
-### The Western view: No
+**My relationships are part of me the way language is.** I didn't choose Mandarin or English—they were given to me by context. But they shape how I think, what I can express, who I can connect with. They're not external to me; they're woven into how I experience the world.
 
-In Western psychology, the self is inside you. Your personality, your traits, your essence. Relationships are external—things you *have*, not things you *are*.
+**The different versions of me are all real.** I'm not the same person in every context. That's not performance or inauthenticity—it's what selves do. The philosopher William James said we have as many social selves as there are people who recognize us. I think he was right.
 
-From this view, I'm the same person whether I'm with my family or my friends. The contexts change; I don't.
-
-### The relational view: Yes
-
-Other traditions—and some Western psychologists—see the self as fundamentally relational. You don't exist as a self until you're in relationship. The "I" emerges from the "we."
-
-From this view, I'm *literally different* with different people. Not performing, not masking—actually different. The relationship is part of what I am in that moment.
-
-### The Taoist view: The question dissolves
-
-In Taoist thinking, fixed categories are the problem. There is no unchanging "self" to locate. There's just process, flow, becoming.
-
-The self is like a river. You can point to it, but it's not a thing—it's a pattern of movement. It exists in relation to the banks, the rain, the ocean it flows toward.
-
-From this view, asking "are my relationships part of me?" is like asking "is the riverbank part of the river?" The question assumes a boundary that doesn't really exist.
-
-## What I've Come To
-
-I don't have a clean answer. But here's where I've landed:
-
-**My relationships are part of me the way my language is part of me.** I didn't choose Mandarin or English—they were given to me by context. But they shape how I think, what I can express, who I can connect with. They're not external to me; they're woven into how I experience the world.
-
-**The "me" that others see is also me.** Not the whole me, but not false either. My mother sees someone real. My friends see someone real. My colleagues see someone real. These aren't masks—they're facets.
-
-**The tension between these facets is also me.** The exhaustion of bridging. The code-switching. The feeling of never fully belonging anywhere. That's not a failure of identity—it's what identity feels like when you're stretched across multiple worlds.
+**The tension is also me.** If you move between different worlds—cultures, communities, generations—you feel the pull of multiple belongings. That tension isn't a failure of identity. It's what identity feels like when it's relational.
 
 ## What This Means for taocore-human
 
-I'm building a system that observes people. This research tells me:
+For the system I'm building:
 
-1. **Observation captures relationships, not selves.** When I detect who appears with whom, I'm seeing the space between people—not who they "really are."
+**Extract** (with uncertainty):
+- Co-occurrence patterns
+- Network centrality
+- Proximity signals
+- Synchrony indicators
 
-2. **Patterns are real but meaning is contextual.** Proximity, synchrony, co-occurrence—these are measurable. But what they mean depends on culture, history, individual circumstance. The numbers don't interpret themselves.
+**Report** (honestly):
+- Numbers with confidence intervals
+- Pattern descriptions, not relationship labels
+- What cannot be determined
 
-3. **Some observations shouldn't be made.** Just because I *can* detect patterns doesn't mean I *should*. The power to see is the power to expose. A system that observes has obligations.
+**Refuse**:
+- Relationship type classifications
+- Quality judgments
+- Predictions about individuals
+- Anything that could expose what people haven't chosen to reveal
 
-What taocore-human should do:
-- Report patterns, not identities
-- Include uncertainty in everything
-- Refuse to label relationships ("friend," "family," "romantic")
-- Never predict outcomes for individuals
-- Protect what people haven't chosen to reveal
+## A Closing Thought
 
-## A Final Thought
+The question "who am I?" might be less useful than "who am I with whom?"
 
-There's a Taoist idea: *the Tao that can be named is not the eternal Tao*.
+Identity isn't a thing to find. It's a pattern that emerges in relationship—with others, with context, with time. Observable behavior traces this pattern imperfectly. What we see is real, but it's not the whole.
 
-Maybe it's the same with the self. The self that can be observed is not the complete self. What I capture with cameras and algorithms is real—but it's a shadow on the wall, not the thing casting it.
-
-I build tools that watch. And I've learned that watching has limits.
-
-The river keeps flowing. The reflection on the surface is not the water.
+The reflection on the water is not the water.
 
 ---
 
@@ -149,10 +191,20 @@ The river keeps flowing. The reflection on the surface is not the water.
 
 Burt, R. S. (1992). *Structural Holes*. Harvard University Press.
 
+Burt, R. S. (2004). Structural holes and good ideas. *American Journal of Sociology*, 110(2), 349-399.
+
 Cooley, C. H. (1902). *Human Nature and the Social Order*. Scribner's.
+
+Dunbar, R. I. M. (1992). Neocortex size as a constraint on group size. *Journal of Human Evolution*, 22(6), 469-493.
 
 Eagle, N., Pentland, A., & Lazer, D. (2009). Inferring friendship network structure. *PNAS*, 106(36), 15274-15278.
 
+Heider, F. (1958). *The Psychology of Interpersonal Relations*. Wiley.
+
 Jernigan, C., & Mistree, B. F. (2009). Gaydar: Facebook friendships expose sexual orientation. *First Monday*, 14(10).
+
+Leskovec, J., et al. (2010). Predicting positive and negative links in online social networks. *WWW*, 641-650.
+
+Saramäki, J., et al. (2014). Persistence of social signatures in human communication. *PNAS*, 111(3), 942-947.
 
 Shrauger, J. S., & Schoeneman, T. J. (1979). Symbolic interactionist view of self-concept. *Psychological Bulletin*, 86(3), 549-573.
