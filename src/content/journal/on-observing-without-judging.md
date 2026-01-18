@@ -40,3 +40,7 @@ If we build systems that observe human behavior, the constraints should be hard:
 The goal isn't to know people. It's to notice patterns in signals, with transparency about what those patterns are and aren't.
 
 Water doesn't claim to understand the stone it flows around. It just flows.
+
+---
+
+*These thoughts eventually shaped [taocore-human](https://github.com/daidaitaotao/taocore-human)—an attempt to build these constraints into code. Whether the implementation honors the philosophy remains to be seen.*
