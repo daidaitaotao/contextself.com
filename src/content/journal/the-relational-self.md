@@ -1,269 +1,158 @@
 ---
-title: "The Relational Self: Identity Through Connection"
+title: "The Relational Self: Are My Relationships Part of Me?"
 date: 2025-01-18
-description: "How relationships with others shape and reveal who we are—and what that means for someone navigating multiple identities."
+description: "A personal exploration of where 'I' ends and 'we' begins."
 ---
 
-Who am I? For most of my life, I thought the answer lived inside me—something to discover through introspection. But the more I study human behavior, the more I see that identity emerges from the space between people. We become ourselves through relationships.
+There's a question I keep returning to: **Am I the person I experience from the inside, or am I the person others see?**
 
-This matters to me personally. As an Asian gay man in my mid-thirties, I've navigated multiple worlds: the expectations of a traditional family, the queer community, professional spaces, and the broader culture. Each relationship has shaped who I am. Each world has a different version of me. Which one is "real"? Maybe all of them. Maybe none.
+Most days I feel like both. And neither.
 
-This article is my attempt to understand what research tells us about relational identity—and what it means for people like me who don't fit neatly into one box.
+I'm building software that observes people—detects faces, tracks who appears with whom, measures how bodies move together. The more I build, the more I wonder: what am I actually capturing? The person? Or just the space around them?
 
-## The Self Is Built from Reflections
+## The Question
 
-Charles Horton Cooley (1902) proposed the "looking-glass self": we form our self-concept by imagining how others see us. Not how they actually see us—how we *imagine* they see us.
+Here's what I'm trying to figure out:
 
-Research backs this up. Shrauger & Schoeneman (1979) analyzed 60 studies and found:
-- Correlation between self-perception and *perceived* other-perception: r = 0.40-0.60
-- Correlation between self-perception and *actual* other-perception: r = 0.20-0.40
+**There is me**—the one who wakes up at 3am with thoughts I don't share, who has preferences and fears and a voice in my head that narrates my life.
 
-**In plain terms**: We're more influenced by what we *think* others think of us than by what they actually think. Our self-image is built on imagination, not reality.
+**There is me-as-seen-by-others**—the son my parents imagine, the friend my friends know, the professional my colleagues work with. Different people see different versions. None of them is wrong, exactly. But none is complete.
 
-**What this means for me**: Growing up, I internalized what I imagined my family thought a good son should be—successful, married to a woman, carrying on the family name. Those imagined expectations shaped me even when no one explicitly stated them. Coming out meant confronting the gap between who I'd become for others and who I actually was.
+**And then there are my relationships**—the connections themselves. Not me, not them, but the space between.
 
-The looking-glass can trap you. But once you see it's a mirror, not a window, you can start choosing which reflections to believe.
+Are those relationships *part* of me? Or are they just... context?
 
-## We Belong to Groups Before We Choose Them
+## Why This Matters to Me
 
-Tajfel & Turner (1979) showed that group membership shapes identity—even arbitrary groups:
+I'm an Asian gay man in my mid-thirties. I've spent my life navigating between worlds that don't always understand each other.
 
-| Condition | In-group favoritism |
-|-----------|---------------------|
-| Random assignment to groups | 70-80% favor their group |
-| Meaningful group membership | 85-95% favor their group |
+With my family, I'm a son with expectations attached—some spoken, most imagined. The good job, the stability, the question of grandchildren that hangs unasked.
 
-Data from 137 studies (Mullen, Brown, & Smith, 1992).
+With my queer friends, I'm someone who came out later than some, who still code-switches when I visit home, who understands the particular exhaustion of managing what different people know about you.
 
-**In plain terms**: Just being assigned to a group—even randomly—makes us favor "our people" over "others." We don't need good reasons to feel loyalty; the label is enough.
+At work, I'm a technologist. The personal stuff stays personal.
 
-**What this means for me**: I belong to multiple groups that don't always overlap. Asian. Gay. Immigrant family. Tech industry. Each membership shapes how I see myself and others. Sometimes these identities align; sometimes they clash.
+Each of these contexts shapes who I am. But here's what I've been sitting with: **which one is "really" me?**
 
-The research suggests these group identities aren't chosen—they're assigned, and they stick. But navigating between them? That's the work of a lifetime.
+The Taoist answer might be: the question is wrong. There is no fixed self to find. The self is a process, not a thing. It emerges in relationship, dissolves, re-forms.
 
-## Relationships Can Be Measured (But Not Fully Understood)
+But that's abstract. Let me try to make it concrete.
 
-This is where I get excited and uncomfortable. Modern research shows that relationships are measurable from behavioral patterns.
+## What the Research Says (Simply)
 
-### Time Together Predicts Friendship
+Scientists have studied how relationships shape identity. Here's what they found, in plain language:
 
-Eagle, Pentland, & Lazer (2009) tracked 94 people for 9 months:
+### We see ourselves through others' eyes
 
-| What they measured | Correlation with friendship |
-|-------------------|----------------------------|
-| Face-to-face time | r = 0.52 |
-| Reciprocal calls | r = 0.58 |
-| Location overlap | r = 0.35 |
+Cooley (1902) called this the "looking-glass self." We don't form our self-image by looking inward—we form it by imagining how others see us.
 
-Combined, these signals predicted self-reported friendship with 95% accuracy.
+The data: we're more influenced by what we *think* others think than by what they actually think (Shrauger & Schoeneman, 1979).
 
-**In plain terms**: Who you spend time with, and who spends time back, predicts who you'd call a friend. The data sees it.
+**What this means**: I grew up with an image of what a good son should be. That image came from imagining my parents' expectations—not from them explicitly stating them. The looking-glass showed me a reflection, and I became it.
 
-**What this means for me**: On one hand, it's validating—the patterns are real. On the other hand, it's reductive. My closest friendships aren't necessarily the people I see most often. Some of my most important relationships are with people I see once a year but who fundamentally shaped who I am.
+Coming out meant breaking the mirror. Or at least, choosing which reflections to believe.
 
-Duration isn't depth. The data captures frequency, not meaning.
+### Who we spend time with shapes who we become
 
-### Where You Sit in the Network Matters
+Eagle, Pentland, & Lazer (2009) found that who you're physically near—and who reciprocates—predicts who you'd call a friend with 95% accuracy.
 
-Burt (1992, 2004) studied 673 managers:
+**What this means**: Relationships aren't just nice-to-have. They're structural. They literally shape our social world, and our social world shapes us.
 
-| Network position | Outcome |
-|-----------------|---------|
-| Bridging disconnected groups | Promoted 1.4 years earlier |
-| Dense, insular network | 45% had ideas rated "good" |
-| Bridging position | 72% had ideas rated "good" |
+But the data misses something. My most important relationships aren't always the most frequent. Some people I see once a year changed my life. Frequency isn't depth.
 
-**In plain terms**: People who connect different social circles—who bridge gaps—get ahead. They have access to diverse information and get credit for synthesizing it.
+### Bridges get ahead—and get tired
 
-**What this means for me**: As someone who moves between different worlds—Asian family, gay community, tech industry—I'm often a bridge. This research suggests that position has value. But it's also exhausting. Being the connector means never fully belonging anywhere.
+Burt (1992) found that people who connect different social circles get promoted faster and have better ideas.
 
-The bridge gets walked on.
+**What this means for me**: I'm often a bridge. Between my traditional family and my queer life. Between Asian cultural expectations and American individualism. Between technical work and philosophical questions.
 
-## How We Move Together Reveals Connection
+Bridges are useful. People walk across them.
 
-### Synchrony Shows Rapport
+Being a bridge means never fully belonging on either side.
 
-When people like each other, they unconsciously move in sync. Bernieri (1988) found:
+### Your network reveals what you hide
 
-| Synchrony level | Correlation with rapport |
-|----------------|-------------------------|
-| High synchrony | r = 0.67 |
-| Low synchrony | r = 0.23 |
+This one hit me hard.
 
-This can be automatically detected from video with 65-72% accuracy (Ramseyer & Tschacher, 2011).
+Jernigan & Mistree (2009) showed they could predict if someone was gay just from their Facebook friends—with 78% accuracy—even if the person never said anything about their orientation.
 
-**In plain terms**: People who feel connected mirror each other's movements, posture, and rhythm. You can see rapport in how bodies move together.
+**What this means**: Your relationships out you. Not because anyone betrays you, but because patterns speak.
 
-**What this means for me**: I notice this in my own life. With close friends, conversations have a flow—we lean in together, laugh at the same moments, finish each other's thoughts. With people I don't click with, everything feels slightly off-beat.
+I came out when I was ready, on my terms. But some people don't have that choice. Their connections reveal them before they're prepared.
 
-This is detectable. Which is both fascinating and unsettling.
+This is why I'm careful about what taocore-human should do. The power to observe is the power to expose. Privacy isn't about having something to hide. It's about controlling your own story.
 
-### Distance Means Different Things in Different Cultures
+## So Are My Relationships Part of Me?
 
-Hall (1966) identified distance zones, but they vary dramatically by culture. Sorokowska et al. (2017) studied 8,943 people across 42 countries:
+I've been thinking about this through a few lenses:
 
-| Region | Preferred personal distance |
-|--------|---------------------------|
-| South America | 76cm |
-| Southern Europe | 84cm |
-| North America | 95cm |
-| Northern Europe | 102cm |
-| East Asia | 108cm |
+### The Western view: No
 
-**In plain terms**: What feels "comfortable" varies by 30%+ across cultures. Two people standing 80cm apart might be close friends in Sweden or casual acquaintances in Brazil.
+In Western psychology, the self is inside you. Your personality, your traits, your essence. Relationships are external—things you *have*, not things you *are*.
 
-**What this means for me**: Growing up Asian American, I learned to read distance differently depending on context. With my parents, physical distance doesn't mean emotional distance—we show love through acts, not closeness. In queer spaces, norms are different again.
+From this view, I'm the same person whether I'm with my family or my friends. The contexts change; I don't.
 
-Any system that interprets distance without cultural context will get it wrong.
+### The relational view: Yes
 
-## The Privacy Problem: Networks Reveal What We Hide
+Other traditions—and some Western psychologists—see the self as fundamentally relational. You don't exist as a self until you're in relationship. The "I" emerges from the "we."
 
-This is where it gets personal.
+From this view, I'm *literally different* with different people. Not performing, not masking—actually different. The relationship is part of what I am in that moment.
 
-Jernigan & Mistree (2009) showed they could predict sexual orientation from Facebook friend networks alone:
-- AUC = 0.78 for gay men
-- No explicit disclosure required
+### The Taoist view: The question dissolves
 
-**In plain terms**: Even if you never say you're gay, your social network reveals it. Who you know outs you.
+In Taoist thinking, fixed categories are the problem. There is no unchanging "self" to locate. There's just process, flow, becoming.
 
-**What this means for me**: I came out on my own terms, when I was ready. But this research shows that for people who aren't ready—who live in hostile environments—their relationships can betray them before they're prepared.
+The self is like a river. You can point to it, but it's not a thing—it's a pattern of movement. It exists in relation to the banks, the rain, the ocean it flows toward.
 
-This is why I'm careful about what taocore-human should and shouldn't do. Relationship data is not neutral. It reveals things people may want to keep private. The power to detect patterns is also the power to expose vulnerabilities.
+From this view, asking "are my relationships part of me?" is like asking "is the riverbank part of the river?" The question assumes a boundary that doesn't really exist.
 
-## Relationships Predict Relationship Failure
+## What I've Come To
 
-Gottman & Levenson (1992) followed 79 couples for 14 years:
+I don't have a clean answer. But here's where I've landed:
 
-| Behavioral pattern | Divorce prediction accuracy |
-|-------------------|---------------------------|
-| Criticism-contempt-defensiveness-stonewalling | 93% |
-| Negative affect reciprocity | 85% |
-| Eye-rolling (contempt) | r = 0.45 with divorce |
+**My relationships are part of me the way my language is part of me.** I didn't choose Mandarin or English—they were given to me by context. But they shape how I think, what I can express, who I can connect with. They're not external to me; they're woven into how I experience the world.
 
-**In plain terms**: How couples interact—especially during conflict—predicts whether they'll stay together with startling accuracy. A single eye-roll correlates with eventual divorce.
+**The "me" that others see is also me.** Not the whole me, but not false either. My mother sees someone real. My friends see someone real. My colleagues see someone real. These aren't masks—they're facets.
 
-**What this means for me**: This research is uncomfortable. It's one thing to understand patterns in aggregate; it's another to imagine a system telling someone their relationship is "at risk."
-
-I've been in relationships where I could feel the pattern—the cycle of criticism and defensiveness that spirals. Knowing the statistics doesn't make it easier to break the pattern. And I don't think a system telling me "your relationship shows dissolution indicators" would help. It might just become a self-fulfilling prophecy.
-
-**My position**: taocore-human will not predict relationship outcomes for individuals. Some knowledge is better left as research findings, not deployed tools.
-
-## Networks Seek Balance
-
-Heider (1958) proposed that social relationships seek equilibrium. Leskovec et al. (2010) tested this on 100,000+ users:
-
-| Triad type | Expected | Observed |
-|------------|----------|----------|
-| All friends (+++) | 12.5% | 35.2% |
-| Two friends, one enemy (++-) | 37.5% | 38.1% |
-| One friend, two enemies (+--) | 37.5% | 21.8% |
-| All enemies (---) | 12.5% | 4.9% |
-
-73% of triads were balanced (vs. 50% expected by chance).
-
-**In plain terms**: "The friend of my friend is my friend" and "the enemy of my enemy is my friend" are not just sayings—they're statistically measurable forces. Social networks evolve toward stable configurations.
-
-**What this means for me**: This connects to why navigating multiple communities is hard. If my gay friends and my traditional family don't mix, I'm living in an unbalanced triad. The pressure to "pick a side" or to separate the worlds is real and structural—not just emotional.
-
-Balance theory also connects to TaoCore's equilibrium framework. Instead of analyzing single snapshots, we ask: has the system reached a stable state? Non-convergence might mean relationships in flux.
-
-## Your Social Signature Is Like a Fingerprint
-
-Saramäki et al. (2014) tracked ego-networks over 18 months:
-
-| Network property | Stability |
-|-----------------|-----------|
-| Network size | r = 0.95 |
-| Tie strength distribution | r = 0.87 |
-| Top 5 contacts persistence | 72% |
-
-**In plain terms**: The *shape* of how you distribute attention across relationships stays remarkably stable over time, even as specific relationships change. You have a relational style—like a fingerprint.
-
-**What this means for me**: Am I someone with a few deep connections or many shallow ones? The data suggests this pattern persists. Understanding my own signature might be as revealing as understanding my personality.
-
-Dunbar's number gives a framework:
-
-| Circle | Size | Contact frequency |
-|--------|------|-------------------|
-| Support clique | 5 | Weekly |
-| Sympathy group | 15 | Monthly |
-| Active network | 150 | Yearly |
-
-I can map my own relationships onto this. The "5" are the people I could call at 3am. The "15" are who I'd invite to a birthday. The "150" are who I'd recognize at a reunion. These layers are real.
-
-## What I've Learned
-
-Writing this—grounding the research in my own experience—has clarified some things:
-
-1. **Identity is relational, not individual.** I'm not the same person with my family as I am with my queer friends as I am at work. These aren't masks; they're facets of who relationships have made me.
-
-2. **Being a bridge is valuable and exhausting.** Connecting different worlds gives you perspective and opportunity. But it also means never fully belonging anywhere.
-
-3. **Observation reveals things people hide.** Relationship patterns can out someone before they're ready. This is why privacy matters—not because we have something to hide, but because we deserve control over our own story.
-
-4. **Networks seek balance.** The tension between different parts of my life isn't personal failure—it's structural. Unbalanced triads create pressure. Understanding that helps me be gentler with myself.
-
-5. **Some predictions shouldn't be made.** Just because we can detect patterns doesn't mean we should act on them. Research and deployment have different ethics.
+**The tension between these facets is also me.** The exhaustion of bridging. The code-switching. The feeling of never fully belonging anywhere. That's not a failure of identity—it's what identity feels like when you're stretched across multiple worlds.
 
 ## What This Means for taocore-human
 
-For the system I'm building, this research suggests:
+I'm building a system that observes people. This research tells me:
 
-**Extract** (with uncertainty):
-- Co-occurrence frequency
-- Network centrality
-- Proximity patterns
-- Synchrony signals
+1. **Observation captures relationships, not selves.** When I detect who appears with whom, I'm seeing the space between people—not who they "really are."
 
-**Report** (honestly):
-- Numbers with confidence intervals
-- "Cannot infer relationship type from behavioral signals alone"
-- Pattern descriptions, not interpretations
+2. **Patterns are real but meaning is contextual.** Proximity, synchrony, co-occurrence—these are measurable. But what they mean depends on culture, history, individual circumstance. The numbers don't interpret themselves.
 
-**Refuse**:
-- Relationship type labels ("romantic", "family")
-- Quality judgments ("close", "deteriorating")
-- Outcome predictions
-- Anything that could out someone or violate their privacy
+3. **Some observations shouldn't be made.** Just because I *can* detect patterns doesn't mean I *should*. The power to see is the power to expose. A system that observes has obligations.
 
-The self is partly constituted by relationships. Observable behavior traces these relationships imperfectly. My goal is to describe patterns while respecting what remains private, contextual, and ultimately unknowable.
+What taocore-human should do:
+- Report patterns, not identities
+- Include uncertainty in everything
+- Refuse to label relationships ("friend," "family," "romantic")
+- Never predict outcomes for individuals
+- Protect what people haven't chosen to reveal
 
-Water reflects what stands before it—but the reflection is not the thing.
+## A Final Thought
+
+There's a Taoist idea: *the Tao that can be named is not the eternal Tao*.
+
+Maybe it's the same with the self. The self that can be observed is not the complete self. What I capture with cameras and algorithms is real—but it's a shadow on the wall, not the thing casting it.
+
+I build tools that watch. And I've learned that watching has limits.
+
+The river keeps flowing. The reflection on the surface is not the water.
 
 ---
 
 ## References
 
-Bernieri, F. J. (1988). Coordinated movement and rapport. *Journal of Nonverbal Behavior*, 12(2), 120-138.
-
 Burt, R. S. (1992). *Structural Holes*. Harvard University Press.
-
-Burt, R. S. (2004). Structural holes and good ideas. *American Journal of Sociology*, 110(2), 349-399.
 
 Cooley, C. H. (1902). *Human Nature and the Social Order*. Scribner's.
 
-Dunbar, R. I. M. (1992). Neocortex size as a constraint on group size. *Journal of Human Evolution*, 22(6), 469-493.
-
 Eagle, N., Pentland, A., & Lazer, D. (2009). Inferring friendship network structure. *PNAS*, 106(36), 15274-15278.
-
-Gottman, J. M., & Levenson, R. W. (1992). Marital processes predictive of later dissolution. *JPSP*, 63(2), 221-233.
-
-Hall, E. T. (1966). *The Hidden Dimension*. Doubleday.
-
-Heider, F. (1958). *The Psychology of Interpersonal Relations*. Wiley.
 
 Jernigan, C., & Mistree, B. F. (2009). Gaydar: Facebook friendships expose sexual orientation. *First Monday*, 14(10).
 
-Leskovec, J., et al. (2010). Predicting positive and negative links. *WWW*, 641-650.
-
-Mullen, B., et al. (1992). Ingroup bias as a function of salience. *EJSP*, 22(2), 103-122.
-
-Ramseyer, F., & Tschacher, W. (2011). Nonverbal synchrony in psychotherapy. *JCCP*, 79(3), 284-295.
-
-Saramäki, J., et al. (2014). Persistence of social signatures. *PNAS*, 111(3), 942-947.
-
 Shrauger, J. S., & Schoeneman, T. J. (1979). Symbolic interactionist view of self-concept. *Psychological Bulletin*, 86(3), 549-573.
-
-Sorokowska, A., et al. (2017). Preferred interpersonal distances: A global comparison. *JCCP*, 48(4), 577-592.
-
-Tajfel, H., & Turner, J. C. (1979). An integrative theory of intergroup conflict. In *The Social Psychology of Intergroup Relations* (pp. 33-47). Brooks/Cole.
