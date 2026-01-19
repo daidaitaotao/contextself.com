@@ -20,15 +20,25 @@ from typing import Dict, Any, Optional
 import numpy as np
 
 # Import taocore-human extractors
+TAOCORE_AVAILABLE = False
+MEDIAPIPE_AVAILABLE = False
+CLIP_AVAILABLE = False
+
 try:
-    from taocore_human.extractors import MediaPipeExtractor, StubExtractor, CLIPSceneExtractor
+    from taocore_human.extractors import MediaPipeExtractor, StubExtractor
     from taocore_human.extractors.base import FaceDetection, PoseDetection, SceneFeatures
     TAOCORE_AVAILABLE = True
     MEDIAPIPE_AVAILABLE = MediaPipeExtractor is not None
-    CLIP_AVAILABLE = CLIPSceneExtractor is not None
 except ImportError:
-    TAOCORE_AVAILABLE = False
-    MEDIAPIPE_AVAILABLE = False
+    pass
+
+# CLIP requires torch/transformers - import separately to handle missing deps
+try:
+    from taocore_human.extractors import CLIPSceneExtractor
+    CLIP_AVAILABLE = True
+except (ImportError, Exception):
+    # torch/transformers not available - CLIP disabled
+    CLIPSceneExtractor = None
     CLIP_AVAILABLE = False
 
 
