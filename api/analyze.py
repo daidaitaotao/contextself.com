@@ -32,8 +32,10 @@ try:
 except ImportError:
     pass
 
-# CLIP requires torch/transformers - import separately to handle missing deps
+# CLIP requires torch/transformers - check if they're actually installed
 try:
+    import torch
+    import transformers
     from taocore_human.extractors import CLIPSceneExtractor
     CLIP_AVAILABLE = True
 except (ImportError, Exception):
