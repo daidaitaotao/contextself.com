@@ -431,6 +431,54 @@ import Layout from '../layouts/Layout.astro';
 
   let currentFile: File | null = null;
 
+  // Resize image if too large (Vercel has 4.5MB body limit)
+  async function resizeImageIfNeeded(dataUrl: string, maxSizeKB = 3000): Promise<string> {
+    // Check size (base64 is ~33% larger than binary)
+    const sizeKB = (dataUrl.length * 0.75) / 1024;
+    if (sizeKB <= maxSizeKB) {
+      return dataUrl;
+    }
+
+    // Check if it's HEIC - browsers can't resize these
+    if (dataUrl.includes('image/heic') || dataUrl.includes('image/heif')) {
+      throw new Error(`Image too large (${(sizeKB / 1024).toFixed(1)}MB). HEIC files cannot be resized in browser. Please use a smaller image or convert to JPEG first.`);
+    }
+
+    // Need to resize
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        // Calculate scale factor
+        const scaleFactor = Math.sqrt(maxSizeKB / sizeKB);
+        const newWidth = Math.floor(img.width * scaleFactor);
+        const newHeight = Math.floor(img.height * scaleFactor);
+
+        // Create canvas and resize
+        const canvas = document.createElement('canvas');
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+        // Try JPEG compression with quality reduction
+        let quality = 0.85;
+        let result = canvas.toDataURL('image/jpeg', quality);
+
+        // Further reduce quality if still too large
+        while ((result.length * 0.75) / 1024 > maxSizeKB && quality > 0.3) {
+          quality -= 0.1;
+          result = canvas.toDataURL('image/jpeg', quality);
+        }
+
+        resolve(result);
+      };
+      img.onerror = () => {
+        reject(new Error(`Image too large (${(sizeKB / 1024).toFixed(1)}MB) and could not be resized. Please use a smaller image.`));
+      };
+      img.src = dataUrl;
+    });
+  }
+
   // Drag and drop handlers
   dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -536,11 +584,14 @@ import Layout from '../layouts/Layout.astro';
 
     try {
       // Convert file to base64
-      const base64 = await new Promise((resolve) => {
+      let base64 = await new Promise<string>((resolve) => {
         const reader = new FileReader();
-        reader.onload = (e) => resolve(e.target.result);
+        reader.onload = (e) => resolve(e.target.result as string);
         reader.readAsDataURL(currentFile);
       });
+
+      // Resize if too large for Vercel's body limit
+      base64 = await resizeImageIfNeeded(base64);
 
       // Call API
       const response = await fetch(API_URL, {
@@ -551,6 +602,13 @@ import Layout from '../layouts/Layout.astro';
         },
         body: JSON.stringify({ image: base64 }),
       });
+
+      // Handle non-JSON error responses (e.g., Vercel "Request Entity Too Large")
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        throw new Error(text || `Server error: ${response.status}`);
+      }
 
       const data = await response.json();
 
