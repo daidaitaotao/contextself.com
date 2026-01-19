@@ -824,7 +824,7 @@ import Layout from '../layouts/Layout.astro';
       // Top scene types (exclude nested objects)
       const sceneTypes = Object.entries(probs)
         .filter(([key, val]) => typeof val === 'number')
-        .sort((a, b) => b[1] - a[1])
+        .sort((a, b) => Number(b[1]) - Number(a[1]))
         .slice(0, 5);
 
       if (sceneTypes.length > 0) {
@@ -834,7 +834,7 @@ import Layout from '../layouts/Layout.astro';
             ${sceneTypes.map(([name, prob]) => `
               <div class="signal-row">
                 <span class="signal-label">${name}:</span>
-                <span class="signal-value">${(prob * 100).toFixed(0)}%</span>
+                <span class="signal-value">${(Number(prob) * 100).toFixed(0)}%</span>
               </div>
             `).join('')}
           </div>
