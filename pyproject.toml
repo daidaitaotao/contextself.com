@@ -1,0 +1,25 @@
+[project]
+name = "contextself-api"
+version = "0.1.0"
+description = "API for contextself.com image analysis"
+requires-python = ">=3.9"
+dependencies = [
+    "taocore>=0.1.0",
+    "taocore-human>=0.1.0",
+    "pillow>=10.0.0",
+    "pillow-heif>=0.18.0",
+    "numpy>=1.24.0",
+    "mediapipe>=0.10.0",
+    "transformers>=4.30.0",
+    "torch>=2.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[tool.uv.sources]
+# Use local repos for development - changes are reflected immediately
+taocore = { path = "../taocore", editable = true }
+taocore-human = { path = "../taocore-human", editable = true }

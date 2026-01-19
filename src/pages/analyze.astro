@@ -1,0 +1,879 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Analyze Image | contextself" description="Upload an image to extract behavioral signals using taocore-human">
+  <div class="analyze-container">
+    <h1>Image Analysis</h1>
+
+    <p class="intro">
+      Upload an image to extract observable signals. This tool detects geometric patterns—faces,
+      poses, spatial arrangements—without making claims about emotions, personality, or identity.
+    </p>
+
+    <div class="disclaimer">
+      <strong>What this tool does:</strong> Extracts geometric facts and behavioral signals with uncertainty estimates.<br>
+      <strong>What it refuses:</strong> Emotion labels, personality inferences, relationship classifications, predictions.
+    </div>
+
+    <div class="api-key-section">
+      <label for="api-key">API Key:</label>
+      <input type="password" id="api-key" placeholder="Enter your API key" />
+      <p class="hint">Contact the site owner to request an API key for testing.</p>
+    </div>
+
+    <div class="upload-section">
+      <div class="drop-zone" id="drop-zone">
+        <p>Drop an image here or click to select</p>
+        <input type="file" id="file-input" accept="image/*,.heic,.heif" />
+      </div>
+
+      <div class="preview-container" id="preview-container" style="display: none;">
+        <img id="preview-image" alt="Preview" />
+        <button id="clear-btn" class="secondary-btn">Clear</button>
+      </div>
+    </div>
+
+    <button id="analyze-btn" disabled>Analyze Image</button>
+
+    <div class="loading" id="loading" style="display: none;">
+      <p>Analyzing...</p>
+    </div>
+
+    <div class="results" id="results" style="display: none;">
+      <h2>Analysis Results</h2>
+
+      <div class="result-disclaimer" id="result-disclaimer"></div>
+
+      <div class="result-section image-metadata" id="metadata-section" style="display: none;">
+        <h3>Image Metadata</h3>
+        <div class="result-content" id="metadata-content"></div>
+      </div>
+
+      <div class="result-section observable-summary" id="summary-section" style="display: none;">
+        <h3>Observable Summary</h3>
+        <div class="result-content" id="summary-content"></div>
+      </div>
+
+      <div class="result-section" id="faces-section">
+        <h3>Faces Detected</h3>
+        <div class="result-content" id="faces-content"></div>
+      </div>
+
+      <div class="result-section" id="poses-section">
+        <h3>Body Poses</h3>
+        <div class="result-content" id="poses-content"></div>
+      </div>
+
+      <div class="result-section" id="scene-section">
+        <h3>Scene & Location (AI-detected from image content)</h3>
+        <div class="result-content" id="scene-content"></div>
+      </div>
+
+      <div class="result-section limitations">
+        <h3>Cannot Determine</h3>
+        <ul id="limitations-list"></ul>
+      </div>
+
+      <details class="raw-output">
+        <summary>Raw JSON Output</summary>
+        <pre id="raw-json"></pre>
+      </details>
+    </div>
+
+    <div class="error" id="error" style="display: none;">
+      <p id="error-message"></p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .analyze-container {
+    max-width: 100%;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  .intro {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .disclaimer {
+    background: #f8f9fa;
+    border-left: 3px solid var(--color-accent);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .api-key-section {
+    margin-bottom: 2rem;
+  }
+
+  .api-key-section label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .api-key-section input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .hint {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-top: 0.5rem;
+  }
+
+  .upload-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .drop-zone {
+    border: 2px dashed var(--color-border);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+    position: relative;
+  }
+
+  .drop-zone:hover,
+  .drop-zone.dragover {
+    border-color: var(--color-accent);
+    background-color: #f8f9fa;
+  }
+
+  .drop-zone input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .preview-container {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  #preview-image {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+  }
+
+  .heic-placeholder {
+    background: #f8f9fa;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .heic-placeholder p {
+    margin: 0.5rem 0;
+  }
+
+  .heic-placeholder .hint {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+
+  .secondary-btn {
+    margin-top: 0.5rem;
+    background: none;
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .secondary-btn:hover {
+    background: #f8f9fa;
+  }
+
+  #analyze-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  #analyze-btn:hover:not(:disabled) {
+    background: #2980b9;
+  }
+
+  #analyze-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-light);
+  }
+
+  .results {
+    margin-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
+  }
+
+  .result-disclaimer {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .result-section {
+    margin-bottom: 1.5rem;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+
+  .result-section h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .result-content {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .limitations {
+    background: #fff;
+    border: 1px solid var(--color-border);
+  }
+
+  .limitations ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: var(--color-text-light);
+  }
+
+  .limitations li {
+    margin-bottom: 0.25rem;
+  }
+
+  .raw-output {
+    margin-top: 1.5rem;
+  }
+
+  .raw-output summary {
+    cursor: pointer;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+
+  .raw-output pre {
+    margin-top: 1rem;
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 0.8rem;
+  }
+
+  .error {
+    margin-top: 1.5rem;
+    background: #fee;
+    border: 1px solid #e74c3c;
+    padding: 1rem;
+    border-radius: 4px;
+    color: #c0392b;
+  }
+
+  .face-item,
+  .pose-item {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .face-item:last-child,
+  .pose-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .signal-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+  }
+
+  .signal-label {
+    color: var(--color-text-light);
+  }
+
+  .signal-value {
+    font-weight: 500;
+  }
+
+  .note {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
+
+  .image-metadata {
+    background: #f5f5f5;
+    border-left: 3px solid #666;
+  }
+
+  .observable-summary {
+    background: #e8f4f8;
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .observable-summary .summary-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .observable-summary .overall-text {
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .face-observations {
+    background: #fff;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+  }
+
+  .signal-group {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .signal-group-title {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .blendshapes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.25rem;
+  }
+
+  .blendshape-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+  }
+
+  .blendshape-name {
+    color: var(--color-text-light);
+  }
+
+  .blendshape-bar {
+    display: inline-block;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    margin-left: 0.5rem;
+  }
+</style>
+
+<script>
+  // API URL configuration
+  // For local development, run: python api/local_server.py
+  // Then set API_URL to 'http://localhost:8000/api/analyze'
+  const API_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:8000/api/analyze'  // Local dev server
+    : '/api/analyze';  // Production (Vercel serverless)
+
+  const dropZone = document.getElementById('drop-zone');
+  const fileInput = document.getElementById('file-input');
+  const previewContainer = document.getElementById('preview-container');
+  const previewImage = document.getElementById('preview-image');
+  const clearBtn = document.getElementById('clear-btn');
+  const analyzeBtn = document.getElementById('analyze-btn');
+  const apiKeyInput = document.getElementById('api-key');
+  const loading = document.getElementById('loading');
+  const results = document.getElementById('results');
+  const error = document.getElementById('error');
+  const errorMessage = document.getElementById('error-message');
+
+  let currentFile = null;
+
+  // Drag and drop handlers
+  dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('dragover');
+  });
+
+  dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('dragover');
+  });
+
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    // Accept image/* or HEIC/HEIF files
+    const isImage = file && (
+      file.type.startsWith('image/') ||
+      file.name.toLowerCase().endsWith('.heic') ||
+      file.name.toLowerCase().endsWith('.heif')
+    );
+    if (isImage) {
+      handleFile(file);
+    }
+  });
+
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      handleFile(file);
+    }
+  });
+
+  clearBtn.addEventListener('click', () => {
+    currentFile = null;
+    previewContainer.style.display = 'none';
+    dropZone.style.display = 'block';
+    analyzeBtn.disabled = true;
+    fileInput.value = '';
+  });
+
+  function handleFile(file) {
+    currentFile = file;
+
+    // Check if it's a HEIC file (browsers can't preview these)
+    const isHeic = file.name.toLowerCase().endsWith('.heic') ||
+                   file.name.toLowerCase().endsWith('.heif') ||
+                   file.type === 'image/heic' ||
+                   file.type === 'image/heif';
+
+    if (isHeic) {
+      // Show placeholder for HEIC files
+      previewImage.src = '';
+      previewImage.alt = 'HEIC file selected (preview not available in browser)';
+      previewImage.style.display = 'none';
+      // Add a text placeholder
+      let placeholder = document.getElementById('heic-placeholder');
+      if (!placeholder) {
+        placeholder = document.createElement('div');
+        placeholder.id = 'heic-placeholder';
+        placeholder.className = 'heic-placeholder';
+        placeholder.innerHTML = `<p>📷 ${file.name}</p><p class="hint">HEIC preview not supported in browser, but analysis will work</p>`;
+        previewContainer.insertBefore(placeholder, previewImage);
+      } else {
+        placeholder.innerHTML = `<p>📷 ${file.name}</p><p class="hint">HEIC preview not supported in browser, but analysis will work</p>`;
+      }
+      placeholder.style.display = 'block';
+      dropZone.style.display = 'none';
+      previewContainer.style.display = 'block';
+      updateAnalyzeButton();
+    } else {
+      // Show preview for other formats
+      const placeholder = document.getElementById('heic-placeholder');
+      if (placeholder) placeholder.style.display = 'none';
+      previewImage.style.display = 'block';
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        previewImage.src = e.target.result;
+        previewImage.alt = 'Preview';
+        dropZone.style.display = 'none';
+        previewContainer.style.display = 'block';
+        updateAnalyzeButton();
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  apiKeyInput.addEventListener('input', updateAnalyzeButton);
+
+  function updateAnalyzeButton() {
+    analyzeBtn.disabled = !currentFile || !apiKeyInput.value.trim();
+  }
+
+  analyzeBtn.addEventListener('click', async () => {
+    if (!currentFile || !apiKeyInput.value.trim()) return;
+
+    // Show loading, hide results/error
+    loading.style.display = 'block';
+    results.style.display = 'none';
+    error.style.display = 'none';
+    analyzeBtn.disabled = true;
+
+    try {
+      // Convert file to base64
+      const base64 = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.readAsDataURL(currentFile);
+      });
+
+      // Call API
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': apiKeyInput.value.trim(),
+        },
+        body: JSON.stringify({ image: base64 }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Analysis failed');
+      }
+
+      // Display results
+      displayResults(data);
+    } catch (err) {
+      errorMessage.textContent = err.message;
+      error.style.display = 'block';
+    } finally {
+      loading.style.display = 'none';
+      updateAnalyzeButton();
+    }
+  });
+
+  function displayResults(data) {
+    // Disclaimer
+    document.getElementById('result-disclaimer').textContent = data.disclaimer;
+
+    // Image Metadata (date, location, camera)
+    const metadataSection = document.getElementById('metadata-section');
+    const metadataContent = document.getElementById('metadata-content');
+    const info = data.image_info;
+
+    if (info.date_taken || info.camera_model || info.gps_latitude) {
+      metadataSection.style.display = 'block';
+      let metaHtml = '';
+
+      if (info.date_taken) {
+        const date = new Date(info.date_taken);
+        metaHtml += `
+          <div class="signal-row">
+            <span class="signal-label">Date taken:</span>
+            <span class="signal-value">${date.toLocaleString()}</span>
+          </div>
+        `;
+      }
+
+      if (info.camera_make || info.camera_model) {
+        const camera = [info.camera_make, info.camera_model].filter(Boolean).join(' ');
+        metaHtml += `
+          <div class="signal-row">
+            <span class="signal-label">Camera:</span>
+            <span class="signal-value">${camera}</span>
+          </div>
+        `;
+      }
+
+      if (info.gps_latitude && info.gps_longitude) {
+        metaHtml += `
+          <div class="signal-row">
+            <span class="signal-label">Location:</span>
+            <span class="signal-value">${info.gps_latitude.toFixed(4)}, ${info.gps_longitude.toFixed(4)}</span>
+          </div>
+        `;
+      }
+
+      metadataContent.innerHTML = metaHtml;
+    } else {
+      metadataSection.style.display = 'none';
+    }
+
+    // Observable Summary (the "story" section)
+    const summarySection = document.getElementById('summary-section');
+    const summaryContent = document.getElementById('summary-content');
+    if (data.observable_summary) {
+      summarySection.style.display = 'block';
+      let summaryHtml = `<p class="overall-text">${data.observable_summary.overall}</p>`;
+
+      // Face observations
+      if (data.observable_summary.faces && data.observable_summary.faces.length > 0) {
+        data.observable_summary.faces.forEach((face, i) => {
+          summaryHtml += `
+            <div class="face-observations">
+              <strong>Face ${i + 1}:</strong>
+              <p class="summary-text">${face.summary}</p>
+            </div>
+          `;
+        });
+      }
+
+      // Pose observations
+      if (data.observable_summary.poses && data.observable_summary.poses.length > 0) {
+        data.observable_summary.poses.forEach((pose, i) => {
+          summaryHtml += `
+            <div class="face-observations">
+              <strong>Body ${i + 1}:</strong>
+              <p class="summary-text">${pose.summary}</p>
+            </div>
+          `;
+        });
+      }
+
+      summaryContent.innerHTML = summaryHtml;
+    } else {
+      summarySection.style.display = 'none';
+    }
+
+    // Faces - detailed data
+    const facesContent = document.getElementById('faces-content');
+    if (data.faces.count === 0) {
+      facesContent.innerHTML = '<p>No faces detected</p>';
+    } else {
+      facesContent.innerHTML = data.faces.detections.map((face, i) => {
+        // Get top blendshapes
+        let topBlendshapes = [];
+        if (face.blendshapes) {
+          topBlendshapes = Object.entries(face.blendshapes)
+            .filter(([name, val]) => name !== '_neutral' && val > 0.1)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 8);
+        }
+
+        // Format gaze direction
+        let gazeText = 'N/A';
+        if (face.gaze_direction) {
+          const [gx, gy] = face.gaze_direction;
+          const xDir = gx > 0.1 ? 'right' : gx < -0.1 ? 'left' : 'center';
+          const yDir = gy > 0.1 ? 'down' : gy < -0.1 ? 'up' : 'center';
+          gazeText = `${xDir}, ${yDir}`;
+        }
+
+        return `
+        <div class="face-item">
+          <strong>Face ${i + 1}</strong>
+
+          <div class="signal-row">
+            <span class="signal-label">Confidence:</span>
+            <span class="signal-value">${(face.confidence * 100).toFixed(1)}%</span>
+          </div>
+
+          ${face.smile_intensity !== null ? `
+          <div class="signal-row">
+            <span class="signal-label">Smile intensity:</span>
+            <span class="signal-value">${(face.smile_intensity * 100).toFixed(1)}%</span>
+          </div>
+          ` : ''}
+
+          <div class="signal-group">
+            <div class="signal-group-title">Eye & Gaze</div>
+            ${face.left_eye_openness !== null ? `
+            <div class="signal-row">
+              <span class="signal-label">Left eye openness:</span>
+              <span class="signal-value">${(face.left_eye_openness * 100).toFixed(1)}%</span>
+            </div>
+            ` : ''}
+            ${face.right_eye_openness !== null ? `
+            <div class="signal-row">
+              <span class="signal-label">Right eye openness:</span>
+              <span class="signal-value">${(face.right_eye_openness * 100).toFixed(1)}%</span>
+            </div>
+            ` : ''}
+            <div class="signal-row">
+              <span class="signal-label">Gaze direction:</span>
+              <span class="signal-value">${gazeText}</span>
+            </div>
+          </div>
+
+          <div class="signal-group">
+            <div class="signal-group-title">Head Pose</div>
+            ${face.head_yaw !== null ? `
+            <div class="signal-row">
+              <span class="signal-label">Head yaw (left/right):</span>
+              <span class="signal-value">${(face.head_yaw * 180 / Math.PI).toFixed(1)}°</span>
+            </div>
+            ` : ''}
+            ${face.head_pitch !== null ? `
+            <div class="signal-row">
+              <span class="signal-label">Head pitch (up/down):</span>
+              <span class="signal-value">${(face.head_pitch * 180 / Math.PI).toFixed(1)}°</span>
+            </div>
+            ` : ''}
+            ${face.head_roll !== null ? `
+            <div class="signal-row">
+              <span class="signal-label">Head roll (tilt):</span>
+              <span class="signal-value">${(face.head_roll * 180 / Math.PI).toFixed(1)}°</span>
+            </div>
+            ` : ''}
+          </div>
+
+          ${face.mouth_openness !== null ? `
+          <div class="signal-group">
+            <div class="signal-group-title">Mouth</div>
+            <div class="signal-row">
+              <span class="signal-label">Mouth openness:</span>
+              <span class="signal-value">${(face.mouth_openness * 100).toFixed(1)}%</span>
+            </div>
+          </div>
+          ` : ''}
+
+          ${topBlendshapes.length > 0 ? `
+          <div class="signal-group">
+            <div class="signal-group-title">Top Facial Action Units</div>
+            <div class="blendshapes-grid">
+              ${topBlendshapes.map(([name, val]) => `
+                <div class="blendshape-item">
+                  <span class="blendshape-name">${name}:</span>
+                  <span class="signal-value">${(val * 100).toFixed(0)}%</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          ` : ''}
+        </div>
+      `}).join('');
+    }
+    facesContent.innerHTML += `<p class="note">${data.faces.note}</p>`;
+
+    // Poses
+    const posesContent = document.getElementById('poses-content');
+    if (data.poses.count === 0) {
+      posesContent.innerHTML = '<p>No body poses detected</p>';
+    } else {
+      posesContent.innerHTML = data.poses.detections.map((pose, i) => `
+        <div class="pose-item">
+          <strong>Pose ${i + 1}</strong>
+          <div class="signal-row">
+            <span class="signal-label">Confidence:</span>
+            <span class="signal-value">${(pose.confidence * 100).toFixed(1)}%</span>
+          </div>
+          ${pose.posture_openness !== null ? `
+          <div class="signal-row">
+            <span class="signal-label">Posture openness:</span>
+            <span class="signal-value">${(pose.posture_openness * 100).toFixed(1)}%</span>
+          </div>
+          ` : ''}
+          <div class="signal-row">
+            <span class="signal-label">Keypoints detected:</span>
+            <span class="signal-value">${Object.keys(pose.keypoints).length}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+    posesContent.innerHTML += `<p class="note">${data.poses.note}</p>`;
+
+    // Scene
+    const sceneContent = document.getElementById('scene-content');
+    const scene = data.scene.features;
+    let sceneHtml = '';
+
+    // Get top scene classifications
+    if (scene.scene_type_probs) {
+      const probs = scene.scene_type_probs;
+
+      // Indoor/outdoor
+      if (probs.indoor_outdoor) {
+        const indoorOutdoor = Object.entries(probs.indoor_outdoor)
+          .sort((a, b) => b[1] - a[1])[0];
+        sceneHtml += `
+          <div class="signal-row">
+            <span class="signal-label">Environment:</span>
+            <span class="signal-value">${indoorOutdoor[0]} (${(indoorOutdoor[1] * 100).toFixed(0)}%)</span>
+          </div>
+        `;
+      }
+
+      // Time of day
+      if (probs.time_of_day) {
+        const timeOfDay = Object.entries(probs.time_of_day)
+          .sort((a, b) => b[1] - a[1])[0];
+        sceneHtml += `
+          <div class="signal-row">
+            <span class="signal-label">Time of day:</span>
+            <span class="signal-value">${timeOfDay[0]} (${(timeOfDay[1] * 100).toFixed(0)}%)</span>
+          </div>
+        `;
+      }
+
+      // Top scene types (exclude nested objects)
+      const sceneTypes = Object.entries(probs)
+        .filter(([key, val]) => typeof val === 'number')
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
+
+      if (sceneTypes.length > 0) {
+        sceneHtml += `
+          <div class="signal-group">
+            <div class="signal-group-title">Top Scene Types</div>
+            ${sceneTypes.map(([name, prob]) => `
+              <div class="signal-row">
+                <span class="signal-label">${name}:</span>
+                <span class="signal-value">${(prob * 100).toFixed(0)}%</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+    }
+
+    // Technical quality
+    if (scene.illumination !== null || scene.blur_level !== null) {
+      sceneHtml += `<div class="signal-group"><div class="signal-group-title">Technical Quality</div>`;
+      if (scene.illumination !== null) {
+        sceneHtml += `
+          <div class="signal-row">
+            <span class="signal-label">Illumination:</span>
+            <span class="signal-value">${(scene.illumination * 100).toFixed(1)}%</span>
+          </div>
+        `;
+      }
+      if (scene.blur_level !== null) {
+        sceneHtml += `
+          <div class="signal-row">
+            <span class="signal-label">Blur level:</span>
+            <span class="signal-value">${(scene.blur_level * 100).toFixed(1)}%</span>
+          </div>
+        `;
+      }
+      sceneHtml += `</div>`;
+    }
+
+    sceneHtml += `<p class="note">${data.scene.note}</p>`;
+    sceneContent.innerHTML = sceneHtml;
+
+    // Limitations
+    const limitationsList = document.getElementById('limitations-list');
+    limitationsList.innerHTML = data.cannot_determine.map(item => `<li>${item}</li>`).join('');
+
+    // Raw JSON
+    document.getElementById('raw-json').textContent = JSON.stringify(data, null, 2);
+
+    results.style.display = 'block';
+  }
+</script>

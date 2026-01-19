@@ -1,0 +1,5 @@
+taocore-human>=0.1.0
+Pillow>=10.0.0
+pillow-heif>=0.18.0
+numpy>=1.24.0
+mediapipe>=0.10.0
