@@ -265,8 +265,8 @@ requires-dist = [
     { name = "numpy", specifier = ">=1.24.0" },
     { name = "pillow", specifier = ">=10.0.0" },
     { name = "pillow-heif", specifier = ">=0.18.0" },
-    { name = "taocore", editable = "../taocore" },
-    { name = "taocore-human", editable = "../taocore-human" },
+    { name = "taocore", specifier = ">=0.1.0" },
+    { name = "taocore-human", specifier = ">=0.2.0" },
     { name = "torch", specifier = ">=2.0.0" },
     { name = "transformers", specifier = ">=4.30.0" },
 ]
@@ -1626,58 +1626,31 @@ wheels = [
 [[package]]
 name = "taocore"
 version = "0.1.0"
-source = { editable = "../taocore" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy", version = "2.0.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.10.*'" },
     { name = "numpy", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "build", marker = "extra == 'dev'", specifier = ">=1.0.0" },
-    { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.0.0" },
-    { name = "numpy", specifier = ">=1.24.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0.0" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0.0" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1.0" },
-    { name = "tox", marker = "extra == 'dev'", specifier = ">=4.0.0" },
-    { name = "twine", marker = "extra == 'dev'", specifier = ">=4.0.0" },
+sdist = { url = "https://files.pythonhosted.org/packages/35/37/c1210d2be220da93612e939b2832adbf7e2a5300eb50383486fc1c5603e8/taocore-0.1.0.tar.gz", hash = "sha256:ce8d6e437cf000a1cffd66fc61a58d2f34cfd6b26036f79cafcdbb05f8514bd7", size = 21149, upload-time = "2026-01-11T16:26:49.961Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/40/f2/ea40cc113c50880e62b9d43f09b39add1a3a05bf5775af90167afee3c762/taocore-0.1.0-py3-none-any.whl", hash = "sha256:6edc69dc159ef39f56919fb25e559bff8a285a81506a0b71f471c6c152278b42", size = 28117, upload-time = "2026-01-11T16:26:48.017Z" },
 ]
-provides-extras = ["dev"]
 
 [[package]]
 name = "taocore-human"
-version = "0.1.0"
-source = { editable = "../taocore-human" }
+version = "0.2.0"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy", version = "2.0.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.10.*'" },
     { name = "numpy", version = "2.4.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "taocore" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "mediapipe", marker = "extra == 'mediapipe'", specifier = ">=0.10.0" },
-    { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.0.0" },
-    { name = "numpy", specifier = ">=1.24.0" },
-    { name = "opencv-python", marker = "extra == 'ml'", specifier = ">=4.5.0" },
-    { name = "opencv-python", marker = "extra == 'video'", specifier = ">=4.5.0" },
-    { name = "pillow", marker = "extra == 'image'", specifier = ">=9.0.0" },
-    { name = "pillow", marker = "extra == 'ml'", specifier = ">=9.0.0" },
-    { name = "pillow", marker = "extra == 'video'", specifier = ">=9.0.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0.0" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0.0" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1.0" },
-    { name = "taocore", specifier = ">=0.1.0" },
-    { name = "torch", marker = "extra == 'clip'", specifier = ">=2.0.0" },
-    { name = "torch", marker = "extra == 'ml'", specifier = ">=2.0.0" },
-    { name = "torchvision", marker = "extra == 'ml'", specifier = ">=0.15.0" },
-    { name = "transformers", marker = "extra == 'clip'", specifier = ">=4.30.0" },
-    { name = "transformers", marker = "extra == 'ml'", specifier = ">=4.30.0" },
+sdist = { url = "https://files.pythonhosted.org/packages/90/07/a4b82bb4866c70bf3030f9a4e5c8d8023ed2db63ef0e34e0df8d7bf32c8a/taocore_human-0.2.0.tar.gz", hash = "sha256:61f5ccec5f7e9f2e77bee017808301275d10155ac140e5cfe00c5b99c4d1b55e", size = 194650, upload-time = "2026-01-19T01:13:14.95Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/12/10/4c3f7ec346c0a640ba9bf1a9b73dfb4a6764968316f2155fd26e58e687a9/taocore_human-0.2.0-py3-none-any.whl", hash = "sha256:d6dcac5de8a7e5fdffd7f1b58492f5a4c84c89b9723996b2b6c40e452cce954c", size = 35159, upload-time = "2026-01-19T01:13:13.509Z" },
 ]
-provides-extras = ["image", "video", "mediapipe", "clip", "ml", "dev"]
 
 [[package]]
 name = "tokenizers"
