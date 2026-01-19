@@ -10,8 +10,8 @@ dependencies = [
     "pillow-heif>=0.18.0",
     "numpy>=1.24.0",
     "mediapipe>=0.10.0",
-    "transformers>=4.30.0",
-    "torch>=2.0.0",
+    # torch and transformers removed - too heavy for Vercel serverless
+    # CLIP scene classification disabled, using stub instead
 ]
 
 [dependency-groups]
