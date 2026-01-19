@@ -6,6 +6,13 @@ geometric signals and behavioral patterns without interpretation.
 """
 
 import os
+
+# Configure writable directories for serverless environment
+# Must be set BEFORE importing MediaPipe
+os.environ["HOME"] = "/tmp"
+os.environ["XDG_CACHE_HOME"] = "/tmp/.cache"
+os.environ["MEDIAPIPE_RESOURCE_DIR"] = "/tmp/mediapipe"
+
 import json
 import base64
 from http.server import BaseHTTPRequestHandler
