@@ -417,19 +417,19 @@ import Layout from '../layouts/Layout.astro';
     ? 'http://localhost:8000/api/analyze'  // Local dev server
     : '/api/analyze';  // Production (Vercel serverless)
 
-  const dropZone = document.getElementById('drop-zone');
-  const fileInput = document.getElementById('file-input');
-  const previewContainer = document.getElementById('preview-container');
-  const previewImage = document.getElementById('preview-image');
-  const clearBtn = document.getElementById('clear-btn');
-  const analyzeBtn = document.getElementById('analyze-btn');
-  const apiKeyInput = document.getElementById('api-key');
-  const loading = document.getElementById('loading');
-  const results = document.getElementById('results');
-  const error = document.getElementById('error');
-  const errorMessage = document.getElementById('error-message');
+  const dropZone = document.getElementById('drop-zone') as HTMLDivElement;
+  const fileInput = document.getElementById('file-input') as HTMLInputElement;
+  const previewContainer = document.getElementById('preview-container') as HTMLDivElement;
+  const previewImage = document.getElementById('preview-image') as HTMLImageElement;
+  const clearBtn = document.getElementById('clear-btn') as HTMLButtonElement;
+  const analyzeBtn = document.getElementById('analyze-btn') as HTMLButtonElement;
+  const apiKeyInput = document.getElementById('api-key') as HTMLInputElement;
+  const loading = document.getElementById('loading') as HTMLDivElement;
+  const results = document.getElementById('results') as HTMLDivElement;
+  const error = document.getElementById('error') as HTMLDivElement;
+  const errorMessage = document.getElementById('error-message') as HTMLParagraphElement;
 
-  let currentFile = null;
+  let currentFile: File | null = null;
 
   // Drag and drop handlers
   dropZone.addEventListener('dragover', (e) => {
@@ -457,7 +457,8 @@ import Layout from '../layouts/Layout.astro';
   });
 
   fileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
+    const target = e.target as HTMLInputElement;
+    const file = target.files?.[0];
     if (file) {
       handleFile(file);
     }
@@ -471,7 +472,7 @@ import Layout from '../layouts/Layout.astro';
     fileInput.value = '';
   });
 
-  function handleFile(file) {
+  function handleFile(file: File) {
     currentFile = file;
 
     // Check if it's a HEIC file (browsers can't preview these)
@@ -508,7 +509,7 @@ import Layout from '../layouts/Layout.astro';
 
       const reader = new FileReader();
       reader.onload = (e) => {
-        previewImage.src = e.target.result;
+        previewImage.src = e.target?.result as string;
         previewImage.alt = 'Preview';
         dropZone.style.display = 'none';
         previewContainer.style.display = 'block';
@@ -568,7 +569,7 @@ import Layout from '../layouts/Layout.astro';
     }
   });
 
-  function displayResults(data) {
+  function displayResults(data: any) {
     // Disclaimer
     document.getElementById('result-disclaimer').textContent = data.disclaimer;
 
@@ -658,9 +659,9 @@ import Layout from '../layouts/Layout.astro';
     } else {
       facesContent.innerHTML = data.faces.detections.map((face, i) => {
         // Get top blendshapes
-        let topBlendshapes = [];
+        let topBlendshapes: [string, number][] = [];
         if (face.blendshapes) {
-          topBlendshapes = Object.entries(face.blendshapes)
+          topBlendshapes = (Object.entries(face.blendshapes) as [string, number][])
             .filter(([name, val]) => name !== '_neutral' && val > 0.1)
             .sort((a, b) => b[1] - a[1])
             .slice(0, 8);
@@ -799,7 +800,7 @@ import Layout from '../layouts/Layout.astro';
 
       // Indoor/outdoor
       if (probs.indoor_outdoor) {
-        const indoorOutdoor = Object.entries(probs.indoor_outdoor)
+        const indoorOutdoor = (Object.entries(probs.indoor_outdoor) as [string, number][])
           .sort((a, b) => b[1] - a[1])[0];
         sceneHtml += `
           <div class="signal-row">
@@ -811,7 +812,7 @@ import Layout from '../layouts/Layout.astro';
 
       // Time of day
       if (probs.time_of_day) {
-        const timeOfDay = Object.entries(probs.time_of_day)
+        const timeOfDay = (Object.entries(probs.time_of_day) as [string, number][])
           .sort((a, b) => b[1] - a[1])[0];
         sceneHtml += `
           <div class="signal-row">
@@ -822,8 +823,8 @@ import Layout from '../layouts/Layout.astro';
       }
 
       // Top scene types (exclude nested objects)
-      const sceneTypes = Object.entries(probs)
-        .filter(([key, val]) => typeof val === 'number')
+      const sceneTypes = (Object.entries(probs) as [string, any][])
+        .filter(([_key, val]) => typeof val === 'number')
         .sort((a, b) => Number(b[1]) - Number(a[1]))
         .slice(0, 5);
 
