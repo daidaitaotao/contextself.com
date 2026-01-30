@@ -1,6 +1,6 @@
 ---
 title: "On Guilt and Regret"
-date: 2025-01-21
+date: 2025-01-30
 description: "Why machines cannot see what we hide even from ourselves"
 ---
 
