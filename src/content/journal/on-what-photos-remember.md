@@ -1,6 +1,6 @@
 ---
 title: "On What Photos Remember"
-date: 2025-01-30
+date: 2025-01-21
 description: "What can a smartphone photo actually tell us about ourselves?"
 ---
 
