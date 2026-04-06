@@ -17,6 +17,13 @@ TaoCore models a system as:
 
 If you can understand “data structures + iteration + error checking,” you can understand TaoCore.
 
+Here is the high‑level dataflow:
+
+```text
+Signals → StateVector → Metrics → Equilibrium Solver → Result + Diagnostics
+         ↘ Graph (Nodes/Edges) ↗
+```
+
 ## 2. Primitives (the data model)
 
 ### Node
@@ -49,6 +56,14 @@ The graph stores:
 - Adjacency (neighbors)
 
 Most graph operations are BFS-style traversal: “What’s connected?” “How far?” “Which path?”
+
+Graph sketch (undirected example):
+
+```text
+  A —— B —— C
+  |          |
+  D —— E —— F
+```
 
 ### StateVector
 
@@ -84,6 +99,18 @@ Implementation details:
 Reference: fixed‑point iteration is standard numerical analysis.  
 See: https://en.wikipedia.org/wiki/Fixed-point_iteration
 
+Pseudo‑code (simplified):
+
+```text
+state = initial
+repeat:
+  next = update(state)
+  residual = ||next - state||
+  if residual < tolerance for N steps: converged
+  if oscillation detected: stop (non‑converged)
+  state = next
+```
+
 ## 4. Metrics: what TaoCore measures
 
 ### BalanceMetric (bounds compliance)
@@ -96,6 +123,13 @@ score = max(0, 1 - dist / range)  otherwise
 ```
 
 This makes the logic explicit: you can see exactly why a score drops.
+
+Example:
+
+```text
+value = 15, bounds = [0, 10]
+dist = 5, range = 10 → score = 1 - 0.5 = 0.5
+```
 
 ### FlowMetric (dynamics)
 
@@ -113,6 +147,14 @@ Modes:
 
 Directionality uses cosine similarity (range -1 to 1).  
 Reference: https://www.ibm.com/think/topics/cosine-similarity
+
+Example:
+
+```text
+delta1 = (1, 0)
+delta2 = (0.5, 0)
+cosine(delta1, delta2) = 1 → same direction
+```
 
 ### ClusterMetric (structure)
 
@@ -153,7 +195,21 @@ Implementation details worth noting:
 - PageRank handles “dangling nodes” (no outgoing edges) by redistributing rank across all nodes.
 - Attention can blend similarity, recency, and decay‑based strength into one score.
 
-## 5. Why this is engineering‑friendly
+## 5. What TaoCore is actually doing in code
+
+Concrete flow (minimal example):
+
+```text
+1. Build Graph(nodes, edges)
+2. Run HubMetric / ClusterMetric on the graph
+3. Build StateVector from numeric features
+4. Iteratively apply update_rule with EquilibriumSolver
+5. Return diagnostics: convergence reason, residuals, stability score
+```
+
+This is the core value: the system either stabilizes with evidence, or it tells you exactly why it didn’t.
+
+## 6. Why this is engineering‑friendly
 
 TaoCore is designed for **bounded claims**:
 
@@ -164,7 +220,7 @@ TaoCore is designed for **bounded claims**:
 
 It doesn’t guess. It measures and reports.
 
-## 6. Evidence in the codebase
+## 7. Evidence in the codebase
 
 The tests in `tests/` verify:
 
@@ -179,7 +235,7 @@ If you want to validate behavior, the tests are the first place to look:
 - `tests/test_metrics.py` (balance/flow/cluster/hub/composite)
 - `tests/test_attention.py` (similarity + composite attention)
 
-## 7. What to read next
+## 8. What to read next
 
 If you want to go deeper:
 
