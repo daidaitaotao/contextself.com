@@ -19,10 +19,7 @@ If you can understand “data structures + iteration + error checking,” you ca
 
 Here is the high‑level dataflow:
 
-```text
-Signals → StateVector → Metrics → Equilibrium Solver → Result + Diagnostics
-         ↘ Graph (Nodes/Edges) ↗
-```
+![TaoCore pipeline](/diagrams/taocore-pipeline.svg)
 
 ## 2. Primitives (the data model)
 
@@ -59,11 +56,7 @@ Most graph operations are BFS-style traversal: “What’s connected?” “How 
 
 Graph sketch (undirected example):
 
-```text
-  A —— B —— C
-  |          |
-  D —— E —— F
-```
+![Graph diamond](/diagrams/graph-diamond.svg)
 
 ### StateVector
 
@@ -110,6 +103,10 @@ repeat:
   if oscillation detected: stop (non‑converged)
   state = next
 ```
+
+Residuals often look like this:
+
+![Equilibrium residuals](/diagrams/equilibrium-residuals.svg)
 
 ## 4. Metrics: what TaoCore measures
 

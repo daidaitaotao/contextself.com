@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="200" viewBox="0 0 760 200">
+  <defs>
+    <style>
+      .axis{stroke:#1f2d3a;stroke-width:2}
+      .win{fill:#f7f5f0;stroke:#1f2d3a;stroke-width:2}
+      .label{font:600 13px 'Georgia', serif; fill:#1f2d3a}
+    </style>
+  </defs>
+
+  <line class="axis" x1="40" y1="60" x2="720" y2="60"/>
+  <text class="label" x="40" y="40">time</text>
+
+  <rect class="win" x="60" y="80" width="220" height="30"/>
+  <rect class="win" x="220" y="120" width="220" height="30"/>
+  <rect class="win" x="380" y="80" width="220" height="30"/>
+
+  <text class="label" x="60" y="105">window 0</text>
+  <text class="label" x="220" y="145">window 1</text>
+  <text class="label" x="380" y="105">window 2</text>
+</svg>

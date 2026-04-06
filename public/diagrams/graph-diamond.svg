@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="240" viewBox="0 0 360 240">
+  <defs>
+    <style>
+      .node{fill:#f7f5f0;stroke:#1f2d3a;stroke-width:2}
+      .label{font:600 16px 'Georgia', serif; fill:#1f2d3a}
+      .edge{stroke:#1f2d3a;stroke-width:2}
+    </style>
+  </defs>
+  <line class="edge" x1="180" y1="40" x2="70" y2="120"/>
+  <line class="edge" x1="180" y1="40" x2="290" y2="120"/>
+  <line class="edge" x1="70" y1="120" x2="180" y2="200"/>
+  <line class="edge" x1="290" y1="120" x2="180" y2="200"/>
+
+  <circle class="node" cx="180" cy="40" r="20"/>
+  <circle class="node" cx="70" cy="120" r="20"/>
+  <circle class="node" cx="290" cy="120" r="20"/>
+  <circle class="node" cx="180" cy="200" r="20"/>
+
+  <text class="label" x="174" y="46">B</text>
+  <text class="label" x="64" y="126">A</text>
+  <text class="label" x="284" y="126">C</text>
+  <text class="label" x="174" y="206">D</text>
+</svg>

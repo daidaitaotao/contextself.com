@@ -12,10 +12,7 @@ This entry explains how `taocore-human` uses TaoCore’s math to analyze photos 
 
 Pipeline map:
 
-```text
-Media → Frames → Extractors → Person/Context Features
-      → Graph → Metrics → Equilibrium → Report
-```
+![TaoCore-Human pipeline](/diagrams/taocore-human-pipeline.svg)
 
 ## 2. Inputs and adapters
 
@@ -43,11 +40,7 @@ image_02.jpg → ImageFrame(index=1, data=HxWxC)
 
 Windowing sketch:
 
-```text
-time: 0s     5s     10s
-win0: [0-----5]
-win1:   [4-----9]   (overlap = 1s)
-```
+![Video windowing](/diagrams/video-windowing.svg)
 
 ## 3. Signals (extractors)
 

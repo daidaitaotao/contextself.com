@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="260" viewBox="0 0 520 260">
+  <defs>
+    <style>
+      .axis{stroke:#1f2d3a;stroke-width:2}
+      .curve{fill:none;stroke:#c05b2a;stroke-width:3}
+      .label{font:600 13px 'Georgia', serif; fill:#1f2d3a}
+      .text{font:400 12px 'Georgia', serif; fill:#1f2d3a}
+      .grid{stroke:#e5dfd2;stroke-width:1}
+    </style>
+  </defs>
+  <line class="axis" x1="60" y1="220" x2="460" y2="220"/>
+  <line class="axis" x1="60" y1="220" x2="60" y2="40"/>
+
+  <line class="grid" x1="60" y1="180" x2="460" y2="180"/>
+  <line class="grid" x1="60" y1="140" x2="460" y2="140"/>
+  <line class="grid" x1="60" y1="100" x2="460" y2="100"/>
+
+  <path class="curve" d="M60,60 L120,95 L180,125 L240,150 L300,170 L360,185 L420,195"/>
+
+  <text class="label" x="10" y="60">residual</text>
+  <text class="label" x="400" y="245">step</text>
+  <text class="text" x="80" y="55">converging</text>
+</svg>
