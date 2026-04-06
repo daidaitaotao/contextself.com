@@ -165,3 +165,65 @@ Tests and pipelines live here:
 - `tests/` for edge cases and correctness
 
 If you want, I can add a tutorial with example inputs/outputs.
+
+## 10. Example walkthrough (small, concrete)
+
+Imagine a folder with 3 photos:
+
+```text
+photo_1.jpg: person_1, person_2
+photo_2.jpg: person_1 only
+photo_3.jpg: person_1, person_2
+```
+
+### Step 1: Extract signals
+
+Suppose the face extractor returns:
+
+```text
+person_1: confidence [0.8, 0.7, 0.9], valence [0.2, 0.1, 0.3]
+person_2: confidence [0.6, 0.7],      valence [-0.1, 0.0]
+```
+
+### Step 2: Build person features
+
+Coverage ratio:
+
+```text
+person_1: 3 / 3 = 1.0
+person_2: 2 / 3 = 0.67
+```
+
+Average confidence:
+
+```text
+person_1: (0.8 + 0.7 + 0.9) / 3 = 0.80
+person_2: (0.6 + 0.7) / 2 = 0.65
+```
+
+Both pass defaults (`min_coverage=0.3`, `min_confidence=0.5`).
+
+### Step 3: Build graph
+
+Since person_1 and person_2 co‑occur twice, we add an edge:
+
+```text
+person_1 —— person_2
+```
+
+### Step 4: Run metrics + equilibrium
+
+- **HubMetric**: both nodes have equal degree (1).
+- **ClusterMetric**: 1 cluster.
+- **Equilibrium**: converges quickly (small graph, stable features).
+
+### Step 5: Decide + report
+
+Because coverage/confidence are sufficient and equilibrium converged:
+
+```text
+interpretation_allowed = True
+confidence_level = "moderate"
+```
+
+If the video pipeline sees high volatility (e.g., arousal trend swinging wildly), it flips to **reject** even if the graph exists.

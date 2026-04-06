@@ -209,7 +209,83 @@ Concrete flow (minimal example):
 
 This is the core value: the system either stabilizes with evidence, or it tells you exactly why it didn’t.
 
-## 6. Why this is engineering‑friendly
+## 6. Equilibrium solver deep dive (with numbers)
+
+The solver is simple but strict. It does three things every step:
+
+1. Apply the update rule: `next = f(state)`
+2. Measure residual: `||next - state||`
+3. Decide whether to stop (converged, oscillating, or max iterations)
+
+Example (scalar state):
+
+```text
+f(x) = 0.8x
+x0 = 10
+
+step 0: x1 = 8.0   residual = |8.0 - 10| = 2.0
+step 1: x2 = 6.4   residual = |6.4 - 8.0| = 1.6
+step 2: x3 = 5.12  residual = 1.28
+...
+```
+
+Residuals shrink geometrically → convergence.
+
+Now a non‑converging example:
+
+```text
+f(x) = -x
+x0 = 1
+
+step 0: x1 = -1
+step 1: x2 =  1
+step 2: x3 = -1
+```
+
+This is a 2‑cycle. TaoCore detects that pattern and returns `OSCILLATION` instead of pretending to converge.
+
+Stability window:
+
+If you require `N` consecutive residuals below tolerance, the solver won’t stop on a single lucky step. That prevents premature “convergence” in noisy systems.
+
+## 7. Graph metrics deep dive (worked example)
+
+Use this graph:
+
+```text
+    B
+   / \
+  A   C
+   \ /
+    D
+```
+
+Edges: A‑B, B‑C, C‑D, D‑A (a diamond).
+
+**Degree centrality**
+
+Every node has degree 2. So all nodes score equally.
+
+**Betweenness centrality**
+
+Shortest paths between A and C go through B or D.  
+So B and D have higher betweenness than A and C.
+
+**Eigenvector centrality**
+
+All nodes are symmetric → equal eigenvector scores.
+
+**PageRank**
+
+In a symmetric graph, PageRank converges to equal scores.  
+In graphs with “sinks” (dangling nodes), TaoCore redistributes rank so probability mass doesn’t disappear.
+
+**ClusterMetric**
+
+Connected components → 1 cluster (fully connected by paths).  
+Modularity (heuristic) → likely 1 community because the graph is uniformly connected.
+
+## 8. Why this is engineering‑friendly
 
 TaoCore is designed for **bounded claims**:
 
@@ -220,7 +296,7 @@ TaoCore is designed for **bounded claims**:
 
 It doesn’t guess. It measures and reports.
 
-## 7. Evidence in the codebase
+## 9. Evidence in the codebase
 
 The tests in `tests/` verify:
 
@@ -235,7 +311,7 @@ If you want to validate behavior, the tests are the first place to look:
 - `tests/test_metrics.py` (balance/flow/cluster/hub/composite)
 - `tests/test_attention.py` (similarity + composite attention)
 
-## 8. What to read next
+## 10. What to read next
 
 If you want to go deeper:
 
