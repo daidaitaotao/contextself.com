@@ -38,6 +38,8 @@ That gives a smooth, monotonic “freshness” factor.
 
 An edge connects two nodes and has a weight. It can be **directed** or **undirected**. If it’s undirected, we add adjacency in both directions. This matters because centrality and clustering depend on connectivity.
 
+Implementation note: in the code, `directed=False` is a first‑class flag on `Edge`, and `Graph.add_edge` mirrors adjacency when it’s false.
+
 ### Graph
 
 The graph stores:
@@ -56,7 +58,7 @@ A `StateVector` is just a numeric array. It can be built from a dict or a NumPy 
 distance(a, b) = ||a - b||_2
 ```
 
-If you build from dicts, TaoCore aligns keys deterministically so distances are valid.
+If you build from dicts, TaoCore aligns keys deterministically so distances are valid. If keys or shapes mismatch, it raises instead of silently computing a wrong distance.
 
 ## 3. Equilibrium solver (fixed-point iteration)
 
@@ -73,6 +75,11 @@ f(x*) = x*
 ```
 
 Why this matters: Many real systems “settle” into stable patterns. The fixed‑point method gives a principled way to find that stable state or detect that one doesn’t exist. If the sequence oscillates, TaoCore surfaces that as a failure mode instead of hiding it.
+
+Implementation details:
+- Residuals are tracked at every step.
+- Convergence can require a stability window (N consecutive steps).
+- Oscillation detection checks 2‑cycle and 3‑cycle patterns.
 
 Reference: fixed‑point iteration is standard numerical analysis.  
 See: https://en.wikipedia.org/wiki/Fixed-point_iteration
@@ -141,6 +148,11 @@ Two modes:
 
 This makes the logic inspectable and tunable.
 
+Implementation details worth noting:
+
+- PageRank handles “dangling nodes” (no outgoing edges) by redistributing rank across all nodes.
+- Attention can blend similarity, recency, and decay‑based strength into one score.
+
 ## 5. Why this is engineering‑friendly
 
 TaoCore is designed for **bounded claims**:
@@ -161,7 +173,11 @@ The tests in `tests/` verify:
 - Equilibrium convergence and oscillation detection
 - Attention scoring and temporal decay
 
-If you want to validate behavior, the tests are the first place to look.
+If you want to validate behavior, the tests are the first place to look:
+
+- `tests/test_solvers.py` (convergence + oscillation)
+- `tests/test_metrics.py` (balance/flow/cluster/hub/composite)
+- `tests/test_attention.py` (similarity + composite attention)
 
 ## 7. What to read next
 
